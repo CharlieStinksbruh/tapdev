@@ -28,43 +28,37 @@ const WebsiteMigrations = () => {
       from: 'WordPress to WordPress',
       description: 'Host-to-host migrations with performance improvements',
       complexity: 'Simple',
-      timeframe: '24-48 hours',
-      price: 'From £299'
+      timeframe: '24-48 hours'
     },
     {
       from: 'Wix to WordPress',
       description: 'Complete platform migration with design recreation',
       complexity: 'Moderate',
-      timeframe: '3-5 days',
-      price: 'From £599'
+      timeframe: '3-5 days'
     },
     {
       from: 'Squarespace to WordPress',
       description: 'Platform migration with enhanced functionality',
       complexity: 'Moderate',
-      timeframe: '3-5 days',
-      price: 'From £699'
+      timeframe: '3-5 days'
     },
     {
       from: 'Shopify to WooCommerce',
       description: 'E-commerce migration with product data transfer',
       complexity: 'Complex',
-      timeframe: '5-7 days',
-      price: 'From £999'
+      timeframe: '5-7 days'
     },
     {
       from: 'Custom CMS to WordPress',
       description: 'Legacy system migration with modern features',
       complexity: 'Complex',
-      timeframe: '7-14 days',
-      price: 'From £1,299'
+      timeframe: '7-14 days'
     },
     {
       from: 'HTML Sites to WordPress',
       description: 'Static to dynamic conversion with CMS integration',
       complexity: 'Moderate',
-      timeframe: '4-6 days',
-      price: 'From £799'
+      timeframe: '4-6 days'
     }
   ];
 
@@ -261,10 +255,6 @@ const WebsiteMigrations = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-gray-400">Timeframe:</span>
                     <span className="text-blue-400 font-medium">{migration.timeframe}</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400">Starting from:</span>
-                    <span className="text-green-400 font-bold">{migration.price}</span>
                   </div>
                 </div>
               </motion.div>

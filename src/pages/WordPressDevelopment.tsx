@@ -30,42 +30,36 @@ const WordPressDevelopment = () => {
       title: 'Custom WordPress Development',
       description: 'Bespoke WordPress solutions tailored to your unique business requirements and brand identity.',
       features: ['Custom post types', 'Advanced custom fields', 'Custom taxonomies', 'API integrations'],
-      price: 'From £1,299'
     },
     {
       icon: <Palette className="h-8 w-8 text-purple-500" />,
       title: 'Theme Development & Customisation',
       description: 'Custom themes and extensive theme modifications to match your exact design specifications.',
       features: ['Responsive design', 'Custom layouts', 'Brand integration', 'Performance optimised'],
-      price: 'From £899'
     },
     {
       icon: <ShoppingCart className="h-8 w-8 text-green-500" />,
       title: 'WooCommerce Development',
       description: 'Complete e-commerce solutions with custom functionality and payment gateway integrations.',
       features: ['Custom checkout', 'Payment gateways', 'Inventory management', 'Multi-currency support'],
-      price: 'From £1,599'
     },
     {
       icon: <Users className="h-8 w-8 text-orange-500" />,
       title: 'Membership Sites',
       description: 'User registration, login systems, and membership-based content management solutions.',
       features: ['User roles', 'Content restrictions', 'Subscription management', 'Member dashboards'],
-      price: 'From £1,199'
     },
     {
       icon: <Database className="h-8 w-8 text-red-500" />,
       title: 'Plugin Development',
       description: 'Custom WordPress plugins to extend functionality and integrate with third-party services.',
       features: ['Custom functionality', 'Third-party integrations', 'Admin interfaces', 'Update mechanisms'],
-      price: 'From £799'
     },
     {
       icon: <Globe className="h-8 w-8 text-indigo-500" />,
       title: 'Multisite Development',
       description: 'WordPress multisite networks for managing multiple websites from a single installation.',
       features: ['Network management', 'Shared resources', 'Centralised updates', 'Custom configurations'],
-      price: 'From £1,799'
     }
   ];
 
@@ -209,7 +203,6 @@ const WordPressDevelopment = () => {
   const packages = [
     {
       name: 'Starter Website',
-      price: '£1,299',
       description: 'Perfect for small businesses and startups',
       features: [
         'Custom WordPress theme',
@@ -220,12 +213,10 @@ const WordPressDevelopment = () => {
         'Basic security setup',
         '30 days support'
       ],
-      popular: false,
-      color: 'blue'
+      popular: false
     },
     {
       name: 'Business Website',
-      price: '£2,499',
       description: 'Ideal for growing businesses',
       features: [
         'Custom WordPress development',
@@ -237,12 +228,10 @@ const WordPressDevelopment = () => {
         'Performance optimisation',
         '60 days support'
       ],
-      popular: true,
-      color: 'purple'
+      popular: true
     },
     {
       name: 'E-commerce Solution',
-      price: '£3,999',
       description: 'Complete online store solution',
       features: [
         'Custom WooCommerce development',
@@ -254,8 +243,7 @@ const WordPressDevelopment = () => {
         'Advanced analytics',
         '90 days support'
       ],
-      popular: false,
-      color: 'green'
+      popular: false
     }
   ];
 
@@ -327,7 +315,6 @@ const WordPressDevelopment = () => {
                   <div className="w-16 h-16 bg-gray-800 rounded-xl flex items-center justify-center">
                     {service.icon}
                   </div>
-                  <span className="text-indigo-400 font-bold text-lg">{service.price}</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">
                   {service.title}
@@ -639,10 +626,6 @@ const WordPressDevelopment = () => {
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {pkg.name}
                   </h3>
-                  <div className="mb-4">
-                    <span className={`text-4xl font-bold text-${pkg.color}-400`}>{pkg.price}</span>
-                    <span className="text-gray-400 ml-2">+ VAT</span>
-                  </div>
                   <p className="text-gray-300">
                     {pkg.description}
                   </p>
@@ -662,7 +645,7 @@ const WordPressDevelopment = () => {
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center ${
                     pkg.popular 
                       ? 'bg-purple-600 text-white hover:bg-purple-700' 
-                      : `bg-${pkg.color}-600/20 text-${pkg.color}-400 hover:bg-${pkg.color}-600 hover:text-white`
+                      : 'bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white'
                   }`}
                 >
                   Choose Package

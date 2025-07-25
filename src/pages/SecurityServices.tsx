@@ -107,7 +107,6 @@ const SecurityServices = () => {
   const securityPlans = [
     {
       name: 'Basic Security',
-      price: '£39',
       description: 'Essential protection for small websites',
       features: [
         'Daily malware scanning',
@@ -120,12 +119,9 @@ const SecurityServices = () => {
         'Security monitoring'
       ],
       popular: false,
-      color: 'blue',
-      guarantee: 'Malware-free guarantee'
     },
     {
       name: 'Advanced Security',
-      price: '£79',
       description: 'Comprehensive protection for business websites',
       features: [
         'Real-time malware scanning',
@@ -140,12 +136,9 @@ const SecurityServices = () => {
         'Security hardening'
       ],
       popular: true,
-      color: 'purple',
-      guarantee: '24/7 incident response'
     },
     {
       name: 'Enterprise Security',
-      price: '£149',
       description: 'Maximum protection for high-value websites',
       features: [
         'Everything in Advanced',
@@ -162,8 +155,6 @@ const SecurityServices = () => {
         'Emergency response hotline'
       ],
       popular: false,
-      color: 'green',
-      guarantee: 'Enterprise SLA & insurance'
     }
   ];
 
@@ -510,16 +501,9 @@ const SecurityServices = () => {
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {plan.name}
                   </h3>
-                  <div className="mb-4">
-                    <span className={`text-4xl font-bold text-${plan.color}-400`}>{plan.price}</span>
-                    <span className="text-gray-400">/month + VAT</span>
-                  </div>
                   <p className="text-gray-300 mb-4">
                     {plan.description}
                   </p>
-                  <div className="text-green-400 text-sm font-medium bg-green-400/10 px-3 py-1 rounded-full inline-block">
-                    {plan.guarantee}
-                  </div>
                 </div>
 
                 <ul className="space-y-3 mb-8">
@@ -536,7 +520,7 @@ const SecurityServices = () => {
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center ${
                     plan.popular 
                       ? 'bg-purple-600 text-white hover:bg-purple-700' 
-                      : `bg-${plan.color}-600/20 text-${plan.color}-400 hover:bg-${plan.color}-600 hover:text-white`
+                      : 'bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white'
                   }`}
                 >
                   Choose Plan

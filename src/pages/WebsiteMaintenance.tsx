@@ -27,7 +27,6 @@ const WebsiteMaintenance = () => {
   const maintenancePlans = [
     {
       name: 'Essential Care',
-      price: '£49',
       description: 'Perfect for small business websites',
       features: [
         'Weekly automated backups',
@@ -40,12 +39,9 @@ const WebsiteMaintenance = () => {
         'Malware scanning'
       ],
       popular: false,
-      color: 'blue',
-      savings: 'Save £200/year vs hourly rates'
     },
     {
       name: 'Professional Care',
-      price: '£89',
       description: 'Ideal for growing businesses',
       features: [
         'Daily automated backups',
@@ -60,12 +56,9 @@ const WebsiteMaintenance = () => {
         'Broken link checks'
       ],
       popular: true,
-      color: 'purple',
-      savings: 'Save £400/year vs hourly rates'
     },
     {
       name: 'Enterprise Care',
-      price: '£159',
       description: 'Complete solution for established businesses',
       features: [
         'Real-time backups',
@@ -82,8 +75,6 @@ const WebsiteMaintenance = () => {
         'Dedicated account manager'
       ],
       popular: false,
-      color: 'green',
-      savings: 'Save £800/year vs hourly rates'
     }
   ];
 
@@ -218,32 +209,26 @@ const WebsiteMaintenance = () => {
     {
       name: 'Content Updates',
       description: 'Additional content updates beyond plan limits',
-      price: '£25/hour'
     },
     {
       name: 'Emergency Support',
       description: 'Priority support for urgent issues outside business hours',
-      price: '£75/hour'
     },
     {
       name: 'Performance Audit',
       description: 'Comprehensive performance analysis and optimisation recommendations',
-      price: '£199'
     },
     {
       name: 'Security Audit',
       description: 'In-depth security assessment with detailed recommendations',
-      price: '£299'
     },
     {
       name: 'SEO Audit',
       description: 'Complete SEO analysis with actionable improvement plan',
-      price: '£249'
     },
     {
       name: 'Conversion Optimisation',
       description: 'A/B testing and conversion rate optimisation setup',
-      price: '£399'
     }
   ];
 
@@ -416,16 +401,9 @@ const WebsiteMaintenance = () => {
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {plan.name}
                   </h3>
-                  <div className="mb-4">
-                    <span className={`text-4xl font-bold text-${plan.color}-400`}>{plan.price}</span>
-                    <span className="text-gray-400">/month + VAT</span>
-                  </div>
                   <p className="text-gray-300 mb-4">
                     {plan.description}
                   </p>
-                  <div className="text-green-400 text-sm font-medium bg-green-400/10 px-3 py-1 rounded-full inline-block">
-                    {plan.savings}
-                  </div>
                 </div>
 
                 <ul className="space-y-3 mb-8">
@@ -442,7 +420,7 @@ const WebsiteMaintenance = () => {
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center ${
                     plan.popular 
                       ? 'bg-purple-600 text-white hover:bg-purple-700' 
-                      : `bg-${plan.color}-600/20 text-${plan.color}-400 hover:bg-${plan.color}-600 hover:text-white`
+                      : 'bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white'
                   }`}
                 >
                   Choose Plan
@@ -587,9 +565,6 @@ const WebsiteMaintenance = () => {
                   <h3 className="text-xl font-bold text-white">
                     {service.name}
                   </h3>
-                  <span className="text-green-400 font-bold">
-                    {service.price}
-                  </span>
                 </div>
                 <p className="text-gray-300">
                   {service.description}

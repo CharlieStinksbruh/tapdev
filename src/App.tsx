@@ -17,6 +17,7 @@ import Blog from './pages/Blog';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

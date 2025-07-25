@@ -223,7 +223,6 @@ const SpeedOptimization = () => {
   const packages = [
     {
       name: 'Essential Speed',
-      price: '£499',
       description: 'Perfect for small business websites',
       features: [
         'Performance audit & report',
@@ -235,13 +234,10 @@ const SpeedOptimization = () => {
         '30-day monitoring',
         'Performance guarantee'
       ],
-      guarantee: '50% speed improvement',
-      popular: false,
-      color: 'blue'
+      guarantee: '50% speed improvement'
     },
     {
       name: 'Professional Speed',
-      price: '£899',
       description: 'Ideal for business websites',
       features: [
         'Comprehensive performance audit',
@@ -255,12 +251,10 @@ const SpeedOptimization = () => {
         'Conversion tracking setup'
       ],
       guarantee: '75% speed improvement',
-      popular: true,
-      color: 'orange'
+      popular: true
     },
     {
       name: 'Enterprise Speed',
-      price: '£1,499',
       description: 'Complete solution for large websites',
       features: [
         'Enterprise performance audit',
@@ -274,9 +268,7 @@ const SpeedOptimization = () => {
         'Monthly performance reports',
         'Dedicated optimisation specialist'
       ],
-      guarantee: '90% speed improvement',
-      popular: false,
-      color: 'green'
+      guarantee: '90% speed improvement'
     }
   ];
 
@@ -672,10 +664,6 @@ const SpeedOptimization = () => {
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {pkg.name}
                   </h3>
-                  <div className="mb-4">
-                    <span className={`text-4xl font-bold text-${pkg.color}-400`}>{pkg.price}</span>
-                    <span className="text-gray-400 ml-2">+ VAT</span>
-                  </div>
                   <p className="text-gray-300 mb-4">
                     {pkg.description}
                   </p>
@@ -698,7 +686,7 @@ const SpeedOptimization = () => {
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center ${
                     pkg.popular 
                       ? 'bg-orange-600 text-white hover:bg-orange-700' 
-                      : `bg-${pkg.color}-600/20 text-${pkg.color}-400 hover:bg-${pkg.color}-600 hover:text-white`
+                      : 'bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white'
                   }`}
                 >
                   Choose Package
