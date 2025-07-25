@@ -33,7 +33,7 @@ const Footer = () => {
                   }
                   
                   try {
-                    const response = await fetch('/api/newsletter', {
+                    const response = await fetch('http://localhost:3001/api/newsletter', {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const Footer = () => {
                       alert(data.error || 'Failed to subscribe');
                     }
                   } catch (error) {
-                    alert('Network error. Please try again.');
+                    alert('Cannot connect to server. Please ensure the backend server is running.');
                   }
                 }}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
@@ -177,6 +177,9 @@ const Footer = () => {
               </Link>
               <Link to="/sitemap" className="text-gray-400 hover:text-white transition-colors duration-300">
                 Sitemap
+              </Link>
+              <Link to="/admin" className="text-gray-400 hover:text-white transition-colors duration-300">
+                Admin
               </Link>
             </div>
           </div>

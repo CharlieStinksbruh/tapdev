@@ -52,10 +52,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
       };
 
       const [statsRes, formsRes, newsletterRes, seoRes] = await Promise.all([
-        fetch('/api/admin/stats', { headers }),
-        fetch('/api/admin/forms', { headers }),
-        fetch('/api/admin/newsletter', { headers }),
-        fetch('/api/admin/seo', { headers })
+        fetch('http://localhost:3001/api/admin/stats', { headers }),
+        fetch('http://localhost:3001/api/admin/forms', { headers }),
+        fetch('http://localhost:3001/api/admin/newsletter', { headers }),
+        fetch('http://localhost:3001/api/admin/seo', { headers })
       ]);
 
       if (statsRes.ok) setStats(await statsRes.json());
@@ -72,7 +72,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
   const updateFormStatus = async (id: number, status: string, notes: string = '') => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/admin/forms/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/admin/forms/${id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -94,7 +94,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/admin/forms/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/admin/forms/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -114,7 +114,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/admin/newsletter/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/admin/newsletter/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -132,7 +132,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
   const updateSeoSettings = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/admin/seo', {
+      const response = await fetch('http://localhost:3001/api/admin/seo', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

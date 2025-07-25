@@ -12,7 +12,7 @@ const Admin = () => {
     const token = localStorage.getItem('adminToken');
     if (token) {
       // Verify token with backend
-      fetch('/api/admin/stats', {
+      fetch('http://localhost:3001/api/admin/stats', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

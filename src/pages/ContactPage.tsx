@@ -59,7 +59,7 @@ const ContactPage = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('http://localhost:3001/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const ContactPage = () => {
         alert(data.error || 'Failed to submit form');
       }
     } catch (error) {
-      alert('Network error. Please try again.');
+      alert('Cannot connect to server. Please ensure the backend server is running.');
     } finally {
       setIsSubmitting(false);
     }
