@@ -68,8 +68,8 @@ const WordPressDevelopment = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 text-white section-padding">
+        <div className="container-custom">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               WordPress Development
@@ -81,39 +81,46 @@ const WordPressDevelopment = () => {
               Custom WordPress solutions, theme development, and e-commerce platforms that deliver exceptional user experiences and drive conversions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition-colors duration-200">
-                Start Your Project
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-200">
-                View Portfolio
-              </button>
+              <Link
+                to="/contact"
+                className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold hover:bg-indigo-50 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                to="/contact"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 flex items-center justify-center space-x-2"
+              >
+                <span>View Portfolio</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Comprehensive WordPress Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               From simple websites to complex e-commerce platforms, we deliver WordPress solutions that scale with your business.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={index} className="glass-effect p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
                 <div className="mb-4">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   {service.description}
                 </p>
               </div>
@@ -123,45 +130,45 @@ const WordPressDevelopment = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Advanced WordPress Features
               </h2>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-gray-300 mb-8">
                 We leverage the full power of WordPress to create sophisticated websites with custom functionality that meets your specific business needs.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-300">{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 text-white p-8 rounded-2xl">
+              <div className="glass-effect p-8 rounded-2xl">
                 <h3 className="text-2xl font-bold mb-6">Why Choose WordPress?</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start space-x-3">
                     <Zap className="h-6 w-6 text-yellow-400 flex-shrink-0 mt-1" />
                     <div>
-                      <strong>Flexible & Scalable:</strong> Grows with your business from simple blogs to complex applications
+                      <strong className="text-white">Flexible & Scalable:</strong> <span className="text-gray-300">Grows with your business from simple blogs to complex applications</span>
                     </div>
                   </li>
                   <li className="flex items-start space-x-3">
                     <Zap className="h-6 w-6 text-yellow-400 flex-shrink-0 mt-1" />
                     <div>
-                      <strong>SEO-Friendly:</strong> Built-in SEO capabilities help improve search engine rankings
+                      <strong className="text-white">SEO-Friendly:</strong> <span className="text-gray-300">Built-in SEO capabilities help improve search engine rankings</span>
                     </div>
                   </li>
                   <li className="flex items-start space-x-3">
                     <Zap className="h-6 w-6 text-yellow-400 flex-shrink-0 mt-1" />
                     <div>
-                      <strong>User-Friendly:</strong> Easy content management for non-technical users
+                      <strong className="text-white">User-Friendly:</strong> <span className="text-gray-300">Easy content management for non-technical users</span>
                     </div>
                   </li>
                 </ul>
@@ -172,13 +179,13 @@ const WordPressDevelopment = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Our Development Process
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               A structured approach that ensures your WordPress project is delivered on time, within budget, and exceeds expectations.
             </p>
           </div>
@@ -189,10 +196,10 @@ const WordPressDevelopment = () => {
                 <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   {step.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   {step.description}
                 </p>
               </div>
@@ -202,26 +209,26 @@ const WordPressDevelopment = () => {
       </section>
 
       {/* Portfolio Showcase */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Recent WordPress Projects
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-300">
               See how we've helped businesses transform their online presence
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div key={item} className="glass-effect rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300">
                 <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-500"></div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2">
                     E-commerce Platform
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-300 mb-4">
                     Custom WooCommerce solution with advanced filtering and checkout optimization.
                   </p>
                   <div className="flex items-center text-blue-600 font-medium">
@@ -236,7 +243,7 @@ const WordPressDevelopment = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Build Your WordPress Site?
           </h2>
@@ -244,12 +251,19 @@ const WordPressDevelopment = () => {
             Let's discuss your project requirements and create a WordPress solution that drives your business forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition-colors duration-200">
-              Get Project Quote
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-200">
-              Schedule Consultation
-            </button>
+            <Link
+              to="/contact"
+              className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold hover:bg-indigo-50 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
+            >
+              <span>Get Project Quote</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              to="/contact"
+              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 flex items-center justify-center space-x-2"
+            >
+              <span>Schedule Consultation</span>
+            </Link>
           </div>
         </div>
       </section>

@@ -99,8 +99,8 @@ const WebsiteMaintenance = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 via-blue-600 to-purple-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-green-600 via-blue-600 to-purple-700 text-white section-padding">
+        <div className="container-custom">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               WordPress Maintenance
@@ -112,43 +112,50 @@ const WebsiteMaintenance = () => {
               Professional WordPress maintenance services that keep your website secure, updated, and performing at its best while you focus on growing your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200">
-                Choose Your Plan
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200">
-                Free Site Audit
-              </button>
+              <Link
+                to="/contact"
+                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
+              >
+                <span>Choose Your Plan</span>
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                to="/contact"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
+              >
+                <span>Free Site Audit</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Maintenance Matters */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Why Website Maintenance is Critical
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Your website is your digital storefront. Without proper maintenance, you risk security breaches, poor performance, and lost business opportunities.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {whyMaintenance.map((item, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-6">
+              <div key={index} className="glass-effect p-8 rounded-2xl text-center hover:bg-white/10 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-800 rounded-xl mb-6">
                   {item.icon}
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">{item.stat}</div>
-                <p className="text-gray-600">{item.description}</p>
+                <div className="text-4xl font-bold text-white mb-2">{item.stat}</div>
+                <p className="text-gray-300">{item.description}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center">
-            <p className="text-lg text-gray-700 font-medium">
+            <p className="text-lg text-gray-300 font-medium">
               Don't become a statistic. Protect your website with professional maintenance.
             </p>
           </div>
@@ -156,27 +163,27 @@ const WebsiteMaintenance = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Comprehensive Maintenance Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Our maintenance services cover every aspect of your website's health, from security to performance optimization.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+              <div key={index} className="glass-effect p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 text-center">
                 <div className="mb-4">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-300">
                   {service.description}
                 </p>
               </div>
@@ -186,13 +193,13 @@ const WebsiteMaintenance = () => {
       </section>
 
       {/* Pricing Plans */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Maintenance Plans for Every Business
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Choose the maintenance plan that fits your website's needs and budget. All plans include our core security and performance features.
             </p>
           </div>
@@ -201,7 +208,7 @@ const WebsiteMaintenance = () => {
             {maintenancePlans.map((plan, index) => (
               <div 
                 key={index}
-                className={`bg-white rounded-2xl shadow-lg p-8 relative ${
+                className={`glass-effect rounded-2xl p-8 relative ${
                   plan.popular ? 'ring-2 ring-purple-600 transform scale-105' : ''
                 }`}
               >
@@ -214,14 +221,14 @@ const WebsiteMaintenance = () => {
                 )}
                 
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-2xl font-bold text-white mb-2">
                     {plan.name}
                   </h3>
                   <div className="mb-4">
                     <span className={`text-4xl font-bold text-${plan.color}-600`}>{plan.price}</span>
-                    <span className="text-gray-600">/month + VAT</span>
+                    <span className="text-gray-400">/month + VAT</span>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-300">
                     {plan.description}
                   </p>
                 </div>
@@ -230,20 +237,21 @@ const WebsiteMaintenance = () => {
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <button 
+                <Link
+                  to="/contact"
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-200 ${
                     plan.popular 
                       ? 'bg-purple-600 text-white hover:bg-purple-700' 
                       : `bg-${plan.color}-100 text-${plan.color}-600 hover:bg-${plan.color}-200`
-                  }`}
+                  } flex items-center justify-center`}
                 >
                   Choose Plan
-                </button>
+                </Link>
               </div>
             ))}
           </div>
@@ -251,13 +259,13 @@ const WebsiteMaintenance = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               How Our Maintenance Works
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               A proactive approach to website maintenance that prevents problems before they occur.
             </p>
           </div>
@@ -270,8 +278,8 @@ const WebsiteMaintenance = () => {
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Initial Site Audit</h3>
-                    <p className="text-gray-600">Comprehensive analysis of your website's current security, performance, and maintenance needs.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Initial Site Audit</h3>
+                    <p className="text-gray-300">Comprehensive analysis of your website's current security, performance, and maintenance needs.</p>
                   </div>
                 </div>
 
@@ -280,8 +288,8 @@ const WebsiteMaintenance = () => {
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Monitoring Setup</h3>
-                    <p className="text-gray-600">Installation of monitoring tools and security systems to watch your site 24/7.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Monitoring Setup</h3>
+                    <p className="text-gray-300">Installation of monitoring tools and security systems to watch your site 24/7.</p>
                   </div>
                 </div>
 
@@ -290,8 +298,8 @@ const WebsiteMaintenance = () => {
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Regular Maintenance</h3>
-                    <p className="text-gray-600">Scheduled updates, backups, and optimizations performed by our expert team.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Regular Maintenance</h3>
+                    <p className="text-gray-300">Scheduled updates, backups, and optimizations performed by our expert team.</p>
                   </div>
                 </div>
 
@@ -300,39 +308,39 @@ const WebsiteMaintenance = () => {
                     4
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Monthly Reporting</h3>
-                    <p className="text-gray-600">Detailed reports showing your site's health, security status, and performance metrics.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Monthly Reporting</h3>
+                    <p className="text-gray-300">Detailed reports showing your site's health, security status, and performance metrics.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 text-white p-8 rounded-2xl">
+            <div className="glass-effect p-8 rounded-2xl">
               <h3 className="text-2xl font-bold mb-6">What's Included in Every Plan:</h3>
               <ul className="space-y-3">
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>WordPress core updates</span>
+                  <span className="text-gray-300">WordPress core updates</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Plugin compatibility testing</span>
+                  <span className="text-gray-300">Plugin compatibility testing</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Malware scanning & removal</span>
+                  <span className="text-gray-300">Malware scanning & removal</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Performance monitoring</span>
+                  <span className="text-gray-300">Performance monitoring</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Uptime monitoring</span>
+                  <span className="text-gray-300">Uptime monitoring</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Emergency support</span>
+                  <span className="text-gray-300">Emergency support</span>
                 </li>
               </ul>
             </div>
@@ -342,7 +350,7 @@ const WebsiteMaintenance = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-green-600 to-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Protect Your Website Today
           </h2>
@@ -350,12 +358,19 @@ const WebsiteMaintenance = () => {
             Don't wait for a security breach or performance issue. Start protecting your website with professional maintenance today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors duration-200">
-              Start Maintenance Plan
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-all duration-200">
-              Get Free Site Audit
-            </button>
+            <Link
+              to="/contact"
+              className="bg-white text-green-600 px-8 py-4 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
+            >
+              <span>Start Maintenance Plan</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              to="/contact"
+              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-green-600 transition-all duration-300 flex items-center justify-center space-x-2"
+            >
+              <span>Get Free Site Audit</span>
+            </Link>
           </div>
         </div>
       </section>

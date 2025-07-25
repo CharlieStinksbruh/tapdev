@@ -43,27 +43,6 @@ const Header = () => {
 
   return (
     <header className="bg-gray-900/95 backdrop-blur-lg border-b border-gray-800 sticky top-0 z-50">
-      {/* Top bar */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2">
-        <div className="container-custom">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <span>+44 20 1234 5678</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span>hello@tapdev.co.uk</span>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <span>🚀 Free consultation for new clients - Limited time!</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <nav className="container-custom">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-3 group">

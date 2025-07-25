@@ -118,8 +118,8 @@ const SecurityServices = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-red-600 via-purple-600 to-indigo-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-red-600 via-purple-600 to-indigo-700 text-white section-padding">
+        <div className="container-custom">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               WordPress Security Services
@@ -131,40 +131,47 @@ const SecurityServices = () => {
               Professional WordPress security services that protect your website from malware, hackers, and cyber threats with 24/7 monitoring and rapid response.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200">
-                Secure My Website
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-all duration-200">
-                Free Security Scan
-              </button>
+              <Link
+                to="/contact"
+                className="bg-white text-red-600 px-8 py-4 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
+              >
+                <span>Secure My Website</span>
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                to="/contact"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
+              >
+                <span>Free Security Scan</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Security Stats */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               The Reality of Website Security
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Cyber threats are increasing every day. Don't become another statistic.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {securityStats.map((stat, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg text-center">
-                <div className="text-4xl font-bold text-red-600 mb-2">{stat.number}</div>
-                <p className="text-gray-600">{stat.description}</p>
+              <div key={index} className="glass-effect p-8 rounded-2xl text-center hover:bg-white/10 transition-all duration-300">
+                <div className="text-4xl font-bold text-red-400 mb-2">{stat.number}</div>
+                <p className="text-gray-300">{stat.description}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center">
-            <p className="text-lg text-gray-700 font-medium">
+            <p className="text-lg text-gray-300 font-medium">
               Your website is under constant attack. Professional security is not optional—it's essential.
             </p>
           </div>
@@ -172,30 +179,30 @@ const SecurityServices = () => {
       </section>
 
       {/* Threat Landscape */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Common Security Threats
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Understanding the threats your website faces is the first step in protecting your business
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {securityThreats.map((threat, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg">
+              <div key={index} className="glass-effect p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
                 <div className="mb-4">
                   {threat.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {threat.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-300 mb-4">
                   {threat.description}
                 </p>
-                <div className="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                <div className="inline-block bg-red-900/30 text-red-400 px-3 py-1 rounded-full text-sm font-medium">
                   {threat.frequency}
                 </div>
               </div>
@@ -205,34 +212,34 @@ const SecurityServices = () => {
       </section>
 
       {/* Security Services */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Comprehensive Security Solutions
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Multi-layered security approach that protects your website from all angles
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {securityServices.map((service, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={index} className="glass-effect p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
                 <div className="mb-4">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-300 mb-4">
                   {service.description}
                 </p>
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center space-x-2">
                       <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                      <span className="text-sm text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -243,13 +250,13 @@ const SecurityServices = () => {
       </section>
 
       {/* Security Plans */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Security Plans for Every Business
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Choose the security level that matches your website's risk profile and business requirements
             </p>
           </div>
@@ -258,7 +265,7 @@ const SecurityServices = () => {
             {securityPlans.map((plan, index) => (
               <div 
                 key={index}
-                className={`bg-white rounded-2xl shadow-lg p-8 relative ${
+                className={`glass-effect rounded-2xl p-8 relative ${
                   plan.popular ? 'ring-2 ring-purple-600 transform scale-105' : ''
                 }`}
               >
@@ -271,14 +278,14 @@ const SecurityServices = () => {
                 )}
                 
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-2xl font-bold text-white mb-2">
                     {plan.name}
                   </h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-red-600">{plan.price}</span>
-                    <span className="text-gray-600">/month + VAT</span>
+                    <span className="text-4xl font-bold text-red-400">{plan.price}</span>
+                    <span className="text-gray-400">/month + VAT</span>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-300">
                     {plan.description}
                   </p>
                 </div>
@@ -287,20 +294,21 @@ const SecurityServices = () => {
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <button 
+                <Link
+                  to="/contact"
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-200 ${
                     plan.popular 
                       ? 'bg-purple-600 text-white hover:bg-purple-700' 
                       : 'bg-red-100 text-red-600 hover:bg-red-200'
-                  }`}
+                  } flex items-center justify-center`}
                 >
                   Choose Plan
-                </button>
+                </Link>
               </div>
             ))}
           </div>
@@ -308,13 +316,13 @@ const SecurityServices = () => {
       </section>
 
       {/* Security Process */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-800/50">
+        <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               How We Secure Your Website
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Our systematic approach to implementing and maintaining comprehensive website security
             </p>
           </div>
@@ -327,8 +335,8 @@ const SecurityServices = () => {
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Security Audit</h3>
-                    <p className="text-gray-600">Comprehensive assessment of your current security posture and vulnerability identification.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Security Audit</h3>
+                    <p className="text-gray-300">Comprehensive assessment of your current security posture and vulnerability identification.</p>
                   </div>
                 </div>
 
@@ -337,8 +345,8 @@ const SecurityServices = () => {
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Security Implementation</h3>
-                    <p className="text-gray-600">Installation and configuration of security tools, firewalls, and monitoring systems.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Security Implementation</h3>
+                    <p className="text-gray-300">Installation and configuration of security tools, firewalls, and monitoring systems.</p>
                   </div>
                 </div>
 
@@ -347,8 +355,8 @@ const SecurityServices = () => {
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Continuous Monitoring</h3>
-                    <p className="text-gray-600">24/7 monitoring with real-time alerts and automated response to security incidents.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Continuous Monitoring</h3>
+                    <p className="text-gray-300">24/7 monitoring with real-time alerts and automated response to security incidents.</p>
                   </div>
                 </div>
 
@@ -357,32 +365,32 @@ const SecurityServices = () => {
                     4
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Regular Updates</h3>
-                    <p className="text-gray-600">Ongoing security updates, patches, and improvements to stay ahead of emerging threats.</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">Regular Updates</h3>
+                    <p className="text-gray-300">Ongoing security updates, patches, and improvements to stay ahead of emerging threats.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-red-600 to-purple-600 text-white p-8 rounded-2xl">
+            <div className="glass-effect p-8 rounded-2xl">
               <h3 className="text-2xl font-bold mb-6">Security Guarantee</h3>
               <ul className="space-y-4">
                 <li className="flex items-start space-x-3">
                   <CheckCircle className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
                   <div>
-                    <strong>Malware-Free Guarantee:</strong> We guarantee your site stays clean or we fix it for free
+                    <strong className="text-white">Malware-Free Guarantee:</strong> <span className="text-gray-300">We guarantee your site stays clean or we fix it for free</span>
                   </div>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
                   <div>
-                    <strong>24/7 Response:</strong> Immediate response to security incidents any time, any day
+                    <strong className="text-white">24/7 Response:</strong> <span className="text-gray-300">Immediate response to security incidents any time, any day</span>
                   </div>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
                   <div>
-                    <strong>No Hidden Fees:</strong> Transparent pricing with no surprise charges for security fixes
+                    <strong className="text-white">No Hidden Fees:</strong> <span className="text-gray-300">Transparent pricing with no surprise charges for security fixes</span>
                   </div>
                 </li>
               </ul>
@@ -393,7 +401,7 @@ const SecurityServices = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-red-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Don't Wait Until It's Too Late
           </h2>
@@ -401,12 +409,19 @@ const SecurityServices = () => {
             Every day you wait is another day your website is vulnerable. Get professional security protection today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-colors duration-200">
-              Secure My Website Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-all duration-200">
-              Get Free Security Scan
-            </button>
+            <Link
+              to="/contact"
+              className="bg-white text-red-600 px-8 py-4 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
+            >
+              <span>Secure My Website Now</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              to="/contact"
+              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
+            >
+              <span>Get Free Security Scan</span>
+            </Link>
           </div>
         </div>
       </section>
