@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Zap, Clock, TrendingUp, Users, CheckCircle, ArrowRight, Target, BarChart3 } from 'lucide-react';
 
 const SpeedOptimization = () => {

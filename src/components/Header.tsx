@@ -79,7 +79,7 @@ const Header = () => {
               {isServicesOpen && (
                 <div 
                   ref={dropdownRef}
-                  className="absolute top-full left-0 mt-1 w-80 glass-effect rounded-2xl shadow-2xl border border-gray-700 py-4 z-50"
+                  className="absolute top-full left-0 mt-1 w-80 bg-gray-900/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-gray-600 py-4 z-50"
                   onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setTimeout(() => setIsServicesOpen(false), 100)}
                 >
@@ -87,13 +87,13 @@ const Header = () => {
                     <Link
                       key={service.path}
                       to={service.path}
-                      className="block px-6 py-3 hover:bg-white/5 transition-all duration-300 group"
+                      className="block px-6 py-3 hover:bg-gray-800/80 transition-all duration-300 group"
                       onClick={() => setIsServicesOpen(false)}
                     >
-                      <div className="font-medium text-gray-200 group-hover:text-blue-400 transition-colors duration-300">
+                      <div className="font-medium text-white group-hover:text-blue-400 transition-colors duration-300">
                         {service.name}
                       </div>
-                      <div className="text-sm text-gray-400 mt-1">
+                      <div className="text-sm text-gray-300 mt-1 group-hover:text-gray-200">
                         {service.description}
                       </div>
                     </Link>
