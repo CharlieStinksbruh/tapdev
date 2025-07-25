@@ -26,53 +26,60 @@ import {
 const WebsiteMaintenance = () => {
   const maintenancePlans = [
     {
-      name: 'Essential Care',
-      description: 'Perfect for small business websites',
+      name: 'Basic',
+      price: '£45',
+      period: 'Per Month + VAT',
+      description: 'Small websites that need basic WordPress security',
       features: [
-        'Weekly automated backups',
-        'Plugin & theme updates',
-        'Security monitoring',
-        'Uptime monitoring (99.9%)',
-        'Basic performance checks',
-        'Email support',
-        'Monthly reports',
-        'Malware scanning'
+        'Plugin Updates',
+        'Theme Updates',
+        '2FA Setup',
+        'Premium Security Plugins',
+        'Weekly Backups',
+        'Ticketed Support (via Portal)',
+        'Onboarding Call'
       ],
       popular: false,
     },
     {
-      name: 'Professional Care',
-      description: 'Ideal for growing businesses',
+      name: 'Enhanced',
+      price: '£75',
+      period: 'Per Month + VAT',
+      description: 'Websites requiring top-tier protection against current and emerging threats, with the occasional content update',
       features: [
-        'Daily automated backups',
-        'Priority plugin & theme updates',
-        'Advanced security scans',
-        '24/7 uptime monitoring',
-        'Performance optimisation',
-        'Content updates (2/month)',
-        'Priority email support',
-        'Detailed monthly reports',
-        'SEO monitoring',
-        'Broken link checks'
+        'Plugin Updates',
+        'Theme Updates',
+        '2FA Setup',
+        'Premium Security Plugins',
+        'Daily Backups',
+        'Speed Optimisation',
+        'Up to 2 content uploads',
+        'Up to 1hr development support',
+        'Account Manager',
+        'Priority Ticketed Support (via Portal)',
+        'Onboarding Call'
       ],
       popular: true,
     },
     {
-      name: 'Enterprise Care',
-      description: 'Complete solution for established businesses',
+      name: 'Complete',
+      price: '£145',
+      period: 'Per Month + VAT',
+      description: 'Busy business owners seeking hands-on support from a dedicated team',
       features: [
-        'Real-time backups',
-        'Immediate security responses',
-        'Advanced threat protection',
-        'CDN management',
-        'Database optimisation',
-        'Content updates (5/month)',
-        'Phone & WhatsApp support',
-        'Custom reporting dashboard',
-        'Conversion optimisation',
-        'A/B testing setup',
-        'Advanced analytics',
-        'Dedicated account manager'
+        'Plugin Updates',
+        'Theme Updates',
+        '2FA Setup',
+        'Premium Security Plugins',
+        'Daily Backups',
+        'Speed Optimisation',
+        'WooCommerce Support',
+        'Up to 4 content uploads',
+        'Up to 2hrs development support',
+        'Dedicated Account Manager',
+        'Ticketed Support (via Portal)',
+        'WhatsApp & Email Support',
+        'Onboarding Call'
       ],
       popular: false,
     }
@@ -187,21 +194,21 @@ const WebsiteMaintenance = () => {
       company: 'E-commerce Store Owner',
       content: 'Since starting the maintenance plan, our website has been rock solid. No more worrying about security or updates - the team handles everything professionally.',
       rating: 5,
-      plan: 'Professional Care'
+      plan: 'Enhanced'
     },
     {
       name: 'Michael Chen',
       company: 'Digital Marketing Agency',
       content: 'The maintenance service has saved us countless hours. Our sites are faster, more secure, and we can focus on growing our business instead of technical issues.',
       rating: 5,
-      plan: 'Enterprise Care'
+      plan: 'Complete'
     },
     {
       name: 'Emma Williams',
       company: 'Small Business Owner',
       content: 'Best investment I\'ve made for my website. The peace of mind knowing experts are monitoring and maintaining my site 24/7 is invaluable.',
       rating: 5,
-      plan: 'Essential Care'
+      plan: 'Basic'
     }
   ];
 
@@ -391,18 +398,21 @@ const WebsiteMaintenance = () => {
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center space-x-2">
-                      <Star className="h-4 w-4" />
-                      <span>Most Popular</span>
+                      <span>Best Value</span>
                     </span>
                   </div>
                 )}
                 
                 <div className="text-center mb-8">
+                  <div className="mb-4">
+                    <div className="text-4xl font-bold text-white">{plan.price}</div>
+                    <div className="text-gray-400">{plan.period}</div>
+                  </div>
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {plan.name}
                   </h3>
                   <p className="text-gray-300 mb-4">
-                    {plan.description}
+                    Best for: {plan.description}
                   </p>
                 </div>
 
@@ -423,7 +433,7 @@ const WebsiteMaintenance = () => {
                       : 'bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white'
                   }`}
                 >
-                  Choose Plan
+                  Sign Up
                 </Link>
               </motion.div>
             ))}

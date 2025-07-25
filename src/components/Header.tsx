@@ -110,6 +110,13 @@ const Header = () => {
             </Link>
             
             <Link 
+              to="/admin" 
+              className="font-medium text-gray-300 hover:text-blue-400 transition-all duration-300"
+            >
+              Admin
+            </Link>
+            
+            <Link 
               to="/contact"
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover-glow"
             >
@@ -160,6 +167,14 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
+              </Link>
+              
+              <Link 
+                to="/admin" 
+                className="font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Admin
               </Link>
               
               <Link
