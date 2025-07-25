@@ -791,7 +791,7 @@ const HomePage = () => {
                 className={`glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group ${
                   service.clickable ? 'cursor-pointer hover:scale-105 hover:shadow-2xl' : ''
                 }`}
-                onClick={() => service.clickable && service.link && window.location.href = service.link}
+                onClick={() => { if (service.clickable && service.link) { window.location.href = service.link; } }}
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-16 h-16 bg-gray-800 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
