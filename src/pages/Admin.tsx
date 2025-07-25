@@ -11,29 +11,23 @@ const Admin = () => {
     // Check if user is already logged in
     const token = localStorage.getItem('adminToken');
     if (token) {
-      // Verify token with backend
-      fetch('http://localhost:3001/api/admin/stats', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          // Token is valid, decode user info (in a real app, you'd verify this properly)
-          const userData = JSON.parse(atob(token.split('.')[1]));
+      try {
+        // Decode and verify token
+        const userData = JSON.parse(atob(token));
+        
+        // Check if token is expired
+        if (userData.exp && userData.exp > Date.now()) {
           setUser(userData);
           setIsAuthenticated(true);
         } else {
-          // Token is invalid, remove it
+          // Token is expired, remove it
           localStorage.removeItem('adminToken');
         }
-      })
-      .catch(() => {
+      } catch (error) {
+        // Invalid token, remove it
         localStorage.removeItem('adminToken');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      }
+      setIsLoading(false);
     } else {
       setIsLoading(false);
     }

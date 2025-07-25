@@ -15,30 +15,46 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Default admin credentials
+  const defaultAdmin = {
+    username: 'Charlie',
+    password: 'Chazf123!',
+    role: 'admin',
+    id: 1
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
+    // Simulate loading delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
+      // Check credentials against default admin
+      if (credentials.username === defaultAdmin.username && 
+          credentials.password === defaultAdmin.password) {
+        
+        // Create a simple token (in production, this would be a proper JWT)
+        const token = btoa(JSON.stringify({
+          id: defaultAdmin.id,
+          username: defaultAdmin.username,
+          role: defaultAdmin.role,
+          exp: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+        }));
 
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem('adminToken', data.token);
-        onLogin(data.token, data.user);
+        localStorage.setItem('adminToken', token);
+        onLogin(token, {
+          id: defaultAdmin.id,
+          username: defaultAdmin.username,
+          role: defaultAdmin.role
+        });
       } else {
-        setError(data.error || 'Login failed');
+        setError('Invalid username or password');
       }
     } catch (error) {
-      setError('Cannot connect to server. Please ensure the backend server is running on port 3001.');
+      setError('Login failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -67,6 +83,13 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
             </div>
             <h1 className="text-3xl font-bold text-white mb-2">Admin Login</h1>
             <p className="text-gray-400">Access the TapDev admin dashboard</p>
+          </div>
+
+          {/* Demo Credentials Info */}
+          <div className="bg-blue-900/20 border border-blue-500/50 rounded-lg p-4 mb-6">
+            <p className="text-blue-400 text-sm font-medium mb-2">Demo Credentials:</p>
+            <p className="text-blue-300 text-sm">Username: Charlie</p>
+            <p className="text-blue-300 text-sm">Password: Chazf123!</p>
           </div>
 
           {error && (

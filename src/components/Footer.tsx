@@ -25,32 +25,33 @@ const Footer = () => {
                 className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors duration-300"
               />
               <button 
-                onClick={async () => {
+                onClick={() => {
                   const email = (document.getElementById('newsletter-email') as HTMLInputElement)?.value;
                   if (!email) {
                     alert('Please enter your email address');
                     return;
                   }
                   
-                  try {
-                    const response = await fetch('http://localhost:3001/api/newsletter', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify({ email }),
-                    });
-                    
-                    const data = await response.json();
-                    if (response.ok) {
-                      alert('Successfully subscribed to newsletter!');
-                      (document.getElementById('newsletter-email') as HTMLInputElement).value = '';
-                    } else {
-                      alert(data.error || 'Failed to subscribe');
-                    }
-                  } catch (error) {
-                    alert('Cannot connect to server. Please ensure the backend server is running.');
+                  // Store newsletter subscription locally for demo purposes
+                  const existingSubscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+                  
+                  // Check if email already exists
+                  if (existingSubscribers.find((sub: any) => sub.email === email)) {
+                    alert('Email already subscribed to newsletter!');
+                    return;
                   }
+                  
+                  const newSubscriber = {
+                    id: Date.now(),
+                    email,
+                    subscribedAt: new Date().toISOString(),
+                    status: 'active'
+                  };
+                  existingSubscribers.push(newSubscriber);
+                  localStorage.setItem('newsletterSubscribers', JSON.stringify(existingSubscribers));
+                  
+                  alert('Successfully subscribed to newsletter!');
+                  (document.getElementById('newsletter-email') as HTMLInputElement).value = '';
                 }}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover-glow flex items-center justify-center space-x-2"
               >

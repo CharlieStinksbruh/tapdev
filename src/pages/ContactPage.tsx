@@ -58,26 +58,22 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    try {
-      const response = await fetch('http://localhost:3001/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        const data = await response.json();
-        alert(data.error || 'Failed to submit form');
-      }
-    } catch (error) {
-      alert('Cannot connect to server. Please ensure the backend server is running.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Store form data locally for demo purposes
+    const existingForms = JSON.parse(localStorage.getItem('contactForms') || '[]');
+    const newForm = {
+      ...formData,
+      id: Date.now(),
+      submittedAt: new Date().toISOString(),
+      status: 'new'
+    };
+    existingForms.push(newForm);
+    localStorage.setItem('contactForms', JSON.stringify(existingForms));
+    
+    setIsSubmitted(true);
+    setIsSubmitting(false);
   };
 
   const contactInfo = [

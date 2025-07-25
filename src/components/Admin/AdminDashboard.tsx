@@ -31,122 +31,140 @@ interface AdminDashboardProps {
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [stats, setStats] = useState<any>({});
-  const [forms, setForms] = useState<any[]>([]);
-  const [newsletter, setNewsletter] = useState<any[]>([]);
-  const [seoSettings, setSeoSettings] = useState<any>({});
-  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // Mock data for demonstration
+  const [stats] = useState({
+    totalForms: 24,
+    newForms: 8,
+    totalSubscribers: 156,
+    recentForms: [
+      { id: 1, name: 'John Smith', email: 'john@example.com', status: 'new', submittedAt: new Date().toISOString() },
+      { id: 2, name: 'Sarah Johnson', email: 'sarah@example.com', status: 'contacted', submittedAt: new Date(Date.now() - 86400000).toISOString() },
+      { id: 3, name: 'Mike Wilson', email: 'mike@example.com', status: 'new', submittedAt: new Date(Date.now() - 172800000).toISOString() }
+    ],
+    recentSubscribers: [
+      { id: 1, email: 'subscriber1@example.com', subscribedAt: new Date().toISOString() },
+      { id: 2, email: 'subscriber2@example.com', subscribedAt: new Date(Date.now() - 86400000).toISOString() },
+      { id: 3, email: 'subscriber3@example.com', subscribedAt: new Date(Date.now() - 172800000).toISOString() }
+    ]
+  });
 
-  const fetchData = async () => {
-    try {
-      const token = localStorage.getItem('adminToken');
-      const headers = {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      };
-
-      const [statsRes, formsRes, newsletterRes, seoRes] = await Promise.all([
-        fetch('http://localhost:3001/api/admin/stats', { headers }),
-        fetch('http://localhost:3001/api/admin/forms', { headers }),
-        fetch('http://localhost:3001/api/admin/newsletter', { headers }),
-        fetch('http://localhost:3001/api/admin/seo', { headers })
-      ]);
-
-      if (statsRes.ok) setStats(await statsRes.json());
-      if (formsRes.ok) setForms(await formsRes.json());
-      if (newsletterRes.ok) setNewsletter(await newsletterRes.json());
-      if (seoRes.ok) setSeoSettings(await seoRes.json());
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setIsLoading(false);
+  const [forms, setForms] = useState([
+    { 
+      id: 1, 
+      name: 'John Smith', 
+      email: 'john@example.com', 
+      company: 'Tech Corp', 
+      service: 'WordPress Development', 
+      message: 'Looking for a custom WordPress solution for our business.',
+      budget: '£5,000 - £10,000',
+      status: 'new', 
+      submittedAt: new Date().toISOString() 
+    },
+    { 
+      id: 2, 
+      name: 'Sarah Johnson', 
+      email: 'sarah@example.com', 
+      company: 'Design Studio', 
+      service: 'Website Migration', 
+      message: 'Need to migrate our site from Wix to WordPress.',
+      budget: '£1,000 - £5,000',
+      status: 'contacted', 
+      submittedAt: new Date(Date.now() - 86400000).toISOString() 
+    },
+    { 
+      id: 3, 
+      name: 'Mike Wilson', 
+      email: 'mike@example.com', 
+      company: 'E-commerce Store', 
+      service: 'Speed Optimization', 
+      message: 'Our site is too slow and affecting conversions.',
+      budget: '£2,000 - £5,000',
+      status: 'completed', 
+      submittedAt: new Date(Date.now() - 172800000).toISOString() 
+    },
+    { 
+      id: 4, 
+      name: 'Emma Davis', 
+      email: 'emma@example.com', 
+      company: 'Marketing Agency', 
+      service: 'Security Services', 
+      message: 'Need comprehensive security for client websites.',
+      budget: '£10,000+',
+      status: 'new', 
+      submittedAt: new Date(Date.now() - 259200000).toISOString() 
     }
+  ]);
+
+  const [newsletter, setNewsletter] = useState([
+    { id: 1, email: 'subscriber1@example.com', subscribedAt: new Date().toISOString(), status: 'active' },
+    { id: 2, email: 'subscriber2@example.com', subscribedAt: new Date(Date.now() - 86400000).toISOString(), status: 'active' },
+    { id: 3, email: 'subscriber3@example.com', subscribedAt: new Date(Date.now() - 172800000).toISOString(), status: 'active' },
+    { id: 4, email: 'subscriber4@example.com', subscribedAt: new Date(Date.now() - 259200000).toISOString(), status: 'active' },
+    { id: 5, email: 'subscriber5@example.com', subscribedAt: new Date(Date.now() - 345600000).toISOString(), status: 'active' }
+  ]);
+
+  const [seoSettings, setSeoSettings] = useState({
+    siteName: 'TapDev - Professional Web Development Services',
+    siteDescription: 'Professional WordPress development, website migrations, and comprehensive web services. Trusted by 500+ businesses across the UK.',
+    favicon: '/favicon.ico',
+    metaKeywords: 'wordpress development, website migration, web development, security services, speed optimization',
+    ogImage: '/og-image.jpg',
+    twitterCard: 'summary_large_image',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TapDev",
+      "description": "Professional web development services specializing in WordPress development, website migrations, and comprehensive web solutions.",
+      "url": "https://tapdev.co.uk",
+      "logo": "https://tapdev.co.uk/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+44-xxx-xxx-xxxx",
+        "contactType": "customer service",
+        "email": "hello@tapdev.co.uk"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "GB"
+      },
+      "sameAs": [
+        "https://twitter.com/tapdev",
+        "https://linkedin.com/company/tapdev"
+      ]
+    },
+    robotsTxt: "User-agent: *\nAllow: /\nSitemap: https://tapdev.co.uk/sitemap.xml",
+    customCSS: "",
+    customJS: "",
+    googleAnalytics: "",
+    googleTagManager: "",
+    facebookPixel: ""
+  });
+
+  const updateFormStatus = (id: number, status: string) => {
+    setForms(prevForms => 
+      prevForms.map(form => 
+        form.id === id ? { ...form, status } : form
+      )
+    );
   };
 
-  const updateFormStatus = async (id: number, status: string, notes: string = '') => {
-    try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:3001/api/admin/forms/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ status, notes })
-      });
-
-      if (response.ok) {
-        fetchData();
-      }
-    } catch (error) {
-      console.error('Error updating form:', error);
-    }
-  };
-
-  const deleteForm = async (id: number) => {
+  const deleteForm = (id: number) => {
     if (!confirm('Are you sure you want to delete this form submission?')) return;
-
-    try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:3001/api/admin/forms/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (response.ok) {
-        fetchData();
-      }
-    } catch (error) {
-      console.error('Error deleting form:', error);
-    }
+    setForms(prevForms => prevForms.filter(form => form.id !== id));
   };
 
-  const deleteSubscriber = async (id: number) => {
+  const deleteSubscriber = (id: number) => {
     if (!confirm('Are you sure you want to delete this subscriber?')) return;
-
-    try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:3001/api/admin/newsletter/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (response.ok) {
-        fetchData();
-      }
-    } catch (error) {
-      console.error('Error deleting subscriber:', error);
-    }
+    setNewsletter(prevNewsletter => prevNewsletter.filter(sub => sub.id !== id));
   };
 
-  const updateSeoSettings = async () => {
-    try {
-      const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/admin/seo', {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(seoSettings)
-      });
-
-      if (response.ok) {
-        alert('SEO settings updated successfully!');
-      }
-    } catch (error) {
-      console.error('Error updating SEO settings:', error);
-    }
+  const updateSeoSettings = () => {
+    // In a real app, this would save to a backend
+    localStorage.setItem('seoSettings', JSON.stringify(seoSettings));
+    alert('SEO settings saved successfully!');
   };
 
   const filteredForms = forms.filter(form => {
@@ -163,14 +181,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
     { id: 'newsletter', name: 'Newsletter', icon: <Mail className="h-5 w-5" /> },
     { id: 'seo', name: 'SEO Settings', icon: <Settings className="h-5 w-5" /> }
   ];
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -233,7 +243,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-gray-400 text-sm">Total Forms</p>
-                      <p className="text-3xl font-bold text-white">{stats.totalForms || 0}</p>
+                      <p className="text-3xl font-bold text-white">{stats.totalForms}</p>
                     </div>
                     <FileText className="h-8 w-8 text-blue-500" />
                   </div>
@@ -243,7 +253,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-gray-400 text-sm">New Forms</p>
-                      <p className="text-3xl font-bold text-white">{stats.newForms || 0}</p>
+                      <p className="text-3xl font-bold text-white">{stats.newForms}</p>
                     </div>
                     <TrendingUp className="h-8 w-8 text-green-500" />
                   </div>
@@ -253,7 +263,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-gray-400 text-sm">Subscribers</p>
-                      <p className="text-3xl font-bold text-white">{stats.totalSubscribers || 0}</p>
+                      <p className="text-3xl font-bold text-white">{stats.totalSubscribers}</p>
                     </div>
                     <Users className="h-8 w-8 text-purple-500" />
                   </div>
@@ -263,7 +273,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-gray-400 text-sm">This Month</p>
-                      <p className="text-3xl font-bold text-white">+{Math.floor(Math.random() * 50) + 10}</p>
+                      <p className="text-3xl font-bold text-white">+32</p>
                     </div>
                     <BarChart3 className="h-8 w-8 text-orange-500" />
                   </div>
@@ -275,7 +285,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
                   <h3 className="text-xl font-bold mb-4">Recent Form Submissions</h3>
                   <div className="space-y-4">
-                    {(stats.recentForms || []).map((form: any) => (
+                    {stats.recentForms.map((form: any) => (
                       <div key={form.id} className="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
                         <div>
                           <p className="font-medium">{form.name}</p>
@@ -296,7 +306,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
                   <h3 className="text-xl font-bold mb-4">Recent Subscribers</h3>
                   <div className="space-y-4">
-                    {(stats.recentSubscribers || []).map((subscriber: any) => (
+                    {stats.recentSubscribers.map((subscriber: any) => (
                       <div key={subscriber.id} className="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
                         <div>
                           <p className="font-medium">{subscriber.email}</p>
@@ -359,6 +369,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           Service
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                          Budget
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                           Status
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
@@ -383,6 +396,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-300">
                             {form.service || 'Not specified'}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-300">
+                            {form.budget || 'Not specified'}
                           </td>
                           <td className="px-6 py-4">
                             <select
@@ -597,32 +613,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                         <option value="summary_large_image">Summary Large Image</option>
                       </select>
                     </div>
-                  </div>
-                </div>
-
-                {/* Schema Markup */}
-                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <Code className="h-5 w-5 mr-2 text-green-400" />
-                    Schema Markup
-                  </h3>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      JSON-LD Schema
-                    </label>
-                    <textarea
-                      value={JSON.stringify(seoSettings.schema || {}, null, 2)}
-                      onChange={(e) => {
-                        try {
-                          const schema = JSON.parse(e.target.value);
-                          setSeoSettings({...seoSettings, schema});
-                        } catch (error) {
-                          // Invalid JSON, don't update
-                        }
-                      }}
-                      rows={10}
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 font-mono text-sm"
-                    />
                   </div>
                 </div>
 
