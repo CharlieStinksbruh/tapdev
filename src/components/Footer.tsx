@@ -56,14 +56,6 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-blue-400" />
                 <span>hello@tapdev.co.uk</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-400">
-                <Phone className="h-5 w-5 text-blue-400" />
-                <span>+44 20 1234 5678</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-400">
-                <MapPin className="h-5 w-5 text-blue-400" />
-                <span>London, United Kingdom</span>
-              </div>
             </div>
 
             {/* Social Links */}
@@ -141,7 +133,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-16 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <div className="text-gray-400 text-sm">
-              © {currentYear} TapDev. All rights reserved. Crafted with ❤️ in London.
+              © {currentYear} TapDev. All rights reserved. Professional web development services.
             </div>
             <div className="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
               <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors duration-300">

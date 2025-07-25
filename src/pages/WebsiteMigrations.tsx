@@ -33,7 +33,7 @@ const WebsiteMigrations = () => {
     {
       step: '1',
       title: 'Site Analysis & Planning',
-      description: 'We analyze your current website structure, content, and hosting environment to create a detailed migration plan.'
+      description: 'We analyse your current website structure, content, and hosting environment to create a detailed migration plan.'
     },
     {
       step: '2',
@@ -47,8 +47,8 @@ const WebsiteMigrations = () => {
     },
     {
       step: '4',
-      title: 'Testing & Optimization',
-      description: 'Thorough testing of all functionality, performance optimization, and SEO configuration setup.'
+      title: 'Testing & Optimisation',
+      description: 'Thorough testing of all functionality, performance optimisation, and SEO configuration setup.'
     },
     {
       step: '5',

@@ -63,8 +63,8 @@ const WebsiteMaintenance = () => {
     },
     {
       icon: <Zap className="h-8 w-8 text-yellow-600" />,
-      title: 'Performance Optimization',
-      description: 'Regular speed audits, image optimization, and caching improvements to maintain peak website performance.'
+      title: 'Performance Optimisation',
+      description: 'Regular speed audits, image optimisation, and caching improvements to maintain peak website performance.'
     },
     {
       icon: <Settings className="h-8 w-8 text-purple-600" />,
@@ -109,7 +109,7 @@ const WebsiteMaintenance = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Professional WordPress maintenance services that keep your website secure, updated, and performing at its best while you focus on growing your business.
+              Don't wait for a security breach or performance issue. Start protecting your website with professional maintenance today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -170,7 +170,7 @@ const WebsiteMaintenance = () => {
               Comprehensive Maintenance Services
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our maintenance services cover every aspect of your website's health, from security to performance optimization.
+              Our maintenance services cover every aspect of your website's health, from security to performance optimisation.
             </p>
           </div>
 
@@ -299,7 +299,7 @@ const WebsiteMaintenance = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-2">Regular Maintenance</h3>
-                    <p className="text-gray-300">Scheduled updates, backups, and optimizations performed by our expert team.</p>
+                    <p className="text-gray-300">Scheduled updates, backups, and optimisations performed by our expert team.</p>
                   </div>
                 </div>
 

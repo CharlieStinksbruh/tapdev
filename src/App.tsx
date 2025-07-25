@@ -9,6 +9,7 @@ import WordPressDevelopment from './pages/WordPressDevelopment';
 import WebsiteMaintenance from './pages/WebsiteMaintenance';
 import SpeedOptimization from './pages/SpeedOptimization';
 import SecurityServices from './pages/SecurityServices';
+import Sitemap from './pages/Sitemap';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/services/website-maintenance" element={<WebsiteMaintenance />} />
             <Route path="/services/speed-optimization" element={<SpeedOptimization />} />
             <Route path="/services/security-services" element={<SecurityServices />} />
+            <Route path="/sitemap" element={<Sitemap />} />
           </Routes>
         </main>
         <Footer />

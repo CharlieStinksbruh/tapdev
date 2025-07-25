@@ -12,7 +12,7 @@ const SecurityServices = () => {
     {
       icon: <Lock className="h-8 w-8 text-orange-500" />,
       title: 'Brute Force Attacks',
-      description: 'Automated attempts to guess passwords and gain unauthorized access to your admin area',
+      description: 'Automated attempts to guess passwords and gain unauthorised access to your admin area',
       frequency: '30,000+ attempts daily'
     },
     {

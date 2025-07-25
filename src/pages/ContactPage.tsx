@@ -71,29 +71,29 @@ const ContactPage = () => {
       description: 'Send us an email anytime'
     },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: 'Call Us',
-      details: '+44 20 1234 5678',
-      description: 'Mon-Fri from 9am to 6pm'
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: 'Visit Us',
-      details: 'London, United Kingdom',
-      description: 'We serve clients worldwide'
-    },
-    {
       icon: <Clock className="h-6 w-6" />,
       title: 'Response Time',
       details: 'Within 2 hours',
       description: 'During business hours'
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: 'Expert Team',
+      details: '10+ Years Experience',
+      description: 'Dedicated professionals'
+    },
+    {
+      icon: <CheckCircle className="h-6 w-6" />,
+      title: 'Success Rate',
+      details: '100% Project Success',
+      description: 'Guaranteed satisfaction'
     }
   ];
 
   const faqs = [
     {
       question: 'How long does a typical project take?',
-      answer: 'Project timelines vary depending on complexity. Simple websites take 2-4 weeks, while complex applications can take 8-12 weeks. We provide detailed timelines during our consultation.'
+      answer: 'Project timelines vary depending on complexity. Simple websites take 2-4 weeks, whilst complex applications can take 8-12 weeks. We provide detailed timelines during our consultation.'
     },
     {
       question: 'Do you offer ongoing support?',
@@ -101,11 +101,11 @@ const ContactPage = () => {
     },
     {
       question: 'What is your development process?',
-      answer: 'We follow a structured 4-step process: Discovery & Planning, Design & Wireframing, Development & Testing, and Launch & Optimization. You\'ll be involved at every stage.'
+      answer: 'We follow a structured 4-step process: Discovery & Planning, Design & Wireframing, Development & Testing, and Launch & Optimisation. You\'ll be involved at every stage.'
     },
     {
       question: 'Can you help with website migrations?',
-      answer: 'Absolutely! We specialize in seamless website migrations with zero downtime, preserved SEO rankings, and improved performance on modern hosting platforms.'
+      answer: 'Absolutely! We specialise in seamless website migrations with zero downtime, preserved SEO rankings, and improved performance on modern hosting platforms.'
     }
   ];
 
@@ -415,8 +415,8 @@ const ContactPage = () => {
                   Website down or security issue? Our emergency support team is available 24/7 for critical issues.
                 </p>
                 <div className="flex items-center space-x-2 text-red-400 font-semibold">
-                  <Phone className="h-5 w-5" />
-                  <span>+44 20 1234 5678</span>
+                  <Mail className="h-5 w-5" />
+                  <span>emergency@tapdev.co.uk</span>
                 </div>
               </div>
             </motion.div>
@@ -481,13 +481,13 @@ const ContactPage = () => {
                 <Mail className="h-5 w-5" />
                 <span>Email Us Directly</span>
               </a>
-              <a
-                href="tel:+442012345678"
+              <Link
+                to="/contact"
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                <Phone className="h-5 w-5" />
-                <span>Call Now</span>
-              </a>
+                <Calendar className="h-5 w-5" />
+                <span>Book Consultation</span>
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -20,10 +20,10 @@ const SpeedOptimization = () => {
     }
   ];
 
-  const optimizationServices = [
+  const optimisationServices = [
     {
-      title: 'Image Optimization',
-      description: 'Compress and optimize images without quality loss using advanced compression techniques',
+      title: 'Image Optimisation',
+      description: 'Compress and optimise images without quality loss using advanced compression techniques',
       benefits: ['Reduced file sizes', 'Faster loading', 'Better SEO']
     },
     {
@@ -37,8 +37,8 @@ const SpeedOptimization = () => {
       benefits: ['Instant loading', 'Reduced server load', 'Better user experience']
     },
     {
-      title: 'Database Optimization',
-      description: 'Clean and optimize your WordPress database for faster query performance',
+      title: 'Database Optimisation',
+      description: 'Clean and optimise your WordPress database for faster query performance',
       benefits: ['Faster queries', 'Reduced overhead', 'Improved stability']
     },
     {
@@ -48,7 +48,7 @@ const SpeedOptimization = () => {
     },
     {
       title: 'Core Web Vitals',
-      description: 'Optimize for Google\'s Core Web Vitals to improve search rankings and user experience',
+      description: 'Optimise for Google\'s Core Web Vitals to improve search rankings and user experience',
       benefits: ['Better SEO', 'Higher rankings', 'Improved UX']
     }
   ];
@@ -68,13 +68,13 @@ const SpeedOptimization = () => {
     },
     {
       step: '2',
-      title: 'Optimization Strategy',
-      description: 'Custom optimization plan based on your specific issues, priorities, and business goals to maximize impact.'
+      title: 'Optimisation Strategy',
+      description: 'Custom optimisation plan based on your specific issues, priorities, and business goals to maximise impact.'
     },
     {
       step: '3',
       title: 'Implementation',
-      description: 'Execute optimization techniques including image compression, code minification, caching setup, and database optimization.'
+      description: 'Execute optimisation techniques including image compression, code minification, caching setup, and database optimisation.'
     },
     {
       step: '4',
@@ -90,13 +90,13 @@ const SpeedOptimization = () => {
         <div className="container-custom">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Website Speed Optimization
+              Website Speed Optimisation
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
                 Boost Conversions by 300%
               </span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-orange-100 max-w-4xl mx-auto">
-              Professional website speed optimization services that dramatically improve your site's performance, search rankings, and user experience.
+              Professional website speed optimisation services that dramatically improve your site's performance, search rankings, and user experience.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -110,7 +110,7 @@ const SpeedOptimization = () => {
                 to="/contact"
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                <span>View Case Studies</span>
+                <span>Request Optimisation Quote</span>
               </Link>
             </div>
           </div>
@@ -193,20 +193,20 @@ const SpeedOptimization = () => {
         </div>
       </section>
 
-      {/* Optimization Services */}
+      {/* Optimisation Services */}
       <section className="section-padding bg-gray-800/50">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Comprehensive Speed Optimization
+              Comprehensive Speed Optimisation
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our optimization services address every aspect of website performance from frontend to backend
+              Our optimisation services address every aspect of website performance from frontend to backend
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {optimizationServices.map((service, index) => (
+            {optimisationServices.map((service, index) => (
               <div key={index} className="glass-effect p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-4">
                   {service.title}
@@ -233,7 +233,7 @@ const SpeedOptimization = () => {
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our Optimization Process
+              Our Optimisation Process
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               A systematic approach to identifying and fixing performance bottlenecks
@@ -272,7 +272,7 @@ const SpeedOptimization = () => {
               Professional Tools & Technologies
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We use industry-leading tools to analyze and optimize your website's performance
+              We use industry-leading tools to analyse and optimise your website's performance
             </p>
           </div>
 
@@ -296,7 +296,7 @@ const SpeedOptimization = () => {
             Ready to Supercharge Your Website?
           </h2>
           <p className="text-xl mb-8 text-orange-100">
-            Get a comprehensive speed audit and optimization quote. See exactly how much faster your website can be.
+            Get a comprehensive speed audit and optimisation quote. See exactly how much faster your website can be.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 px-4 sm:px-6 lg:px-8">
             <div className="glass-effect rounded-xl p-6">
@@ -304,15 +304,15 @@ const SpeedOptimization = () => {
               <p className="mb-4">Complete performance analysis with detailed recommendations</p>
               <ul className="text-left space-y-2 text-orange-100">
                 <li>• Performance score analysis</li>
-                <li>• Optimization opportunities</li>
+                <li>• Optimisation opportunities</li>
                 <li>• Detailed improvement plan</li>
               </ul>
             </div>
             <div className="glass-effect rounded-xl p-6">
-              <h3 className="text-xl font-semibold mb-3">Full Optimization</h3>
-              <p className="mb-4">Complete speed optimization service with ongoing monitoring</p>
+              <h3 className="text-xl font-semibold mb-3">Full Optimisation</h3>
+              <p className="mb-4">Complete speed optimisation service with ongoing monitoring</p>
               <ul className="text-left space-y-2 text-orange-100">
-                <li>• All optimization techniques</li>
+                <li>• All optimisation techniques</li>
                 <li>• 30-day performance guarantee</li>
                 <li>• Ongoing monitoring & support</li>
               </ul>

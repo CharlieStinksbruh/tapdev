@@ -10,7 +10,7 @@ const WordPressDevelopment = () => {
     },
     {
       icon: <Palette className="h-8 w-8 text-purple-600" />,
-      title: 'Theme Development & Customization',
+      title: 'Theme Development & Customisation',
       description: 'Custom themes and extensive theme modifications to match your exact design specifications.'
     },
     {
@@ -20,8 +20,8 @@ const WordPressDevelopment = () => {
     },
     {
       icon: <Search className="h-8 w-8 text-orange-600" />,
-      title: 'SEO Optimization',
-      description: 'Built-in SEO best practices, optimized code structure, and search engine friendly URLs.'
+      title: 'SEO Optimisation',
+      description: 'Built-in SEO best practices, optimised code structure, and search engine friendly URLs.'
     },
     {
       icon: <ShoppingCart className="h-8 w-8 text-red-600" />,
@@ -39,17 +39,17 @@ const WordPressDevelopment = () => {
     'Custom Post Types & Fields',
     'Plugin Development',
     'API Integrations',
-    'Performance Optimization',
+    'Performance Optimisation',
     'Security Hardening',
     'Multilingual Support',
-    'Database Optimization',
+    'Database Optimisation',
     'Third-party Integrations'
   ];
 
   const process = [
     {
       title: 'Discovery & Planning',
-      description: 'We analyze your requirements, target audience, and business goals to create a comprehensive development strategy.'
+      description: 'We analyse your requirements, target audience, and business goals to create a comprehensive development strategy.'
     },
     {
       title: 'Design & Wireframing',
@@ -60,8 +60,8 @@ const WordPressDevelopment = () => {
       description: 'Clean, efficient code development with rigorous testing across multiple devices and browsers.'
     },
     {
-      title: 'Launch & Optimization',
-      description: 'Smooth deployment with performance optimization and ongoing support to ensure optimal functionality.'
+      title: 'Launch & Optimisation',
+      description: 'Smooth deployment with performance optimisation and ongoing support to ensure optimal functionality.'
     }
   ];
 
@@ -229,7 +229,7 @@ const WordPressDevelopment = () => {
                     E-commerce Platform
                   </h3>
                   <p className="text-gray-300 mb-4">
-                    Custom WooCommerce solution with advanced filtering and checkout optimization.
+                    Custom WooCommerce solution with advanced filtering and checkout optimisation.
                   </p>
                   <div className="flex items-center text-blue-600 font-medium">
                     View Case Study →

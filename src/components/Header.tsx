@@ -18,26 +18,16 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (servicesRef.current && dropdownRef.current) {
-        const servicesRect = servicesRef.current.getBoundingClientRect();
-        const dropdownRect = dropdownRef.current.getBoundingClientRect();
-        
-        const isInServices = e.clientX >= servicesRect.left && e.clientX <= servicesRect.right &&
-                           e.clientY >= servicesRect.top && e.clientY <= servicesRect.bottom;
-        
-        const isInDropdown = e.clientX >= dropdownRect.left && e.clientX <= dropdownRect.right &&
-                           e.clientY >= dropdownRect.top && e.clientY <= dropdownRect.bottom;
-        
-        if (!isInServices && !isInDropdown) {
-          setIsServicesOpen(false);
-        }
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node) &&
+          dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
       }
     };
 
     if (isServicesOpen) {
-      document.addEventListener('mousemove', handleMouseLeave);
-      return () => document.removeEventListener('mousemove', handleMouseLeave);
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
     }
   }, [isServicesOpen]);
 
@@ -71,6 +61,13 @@ const Header = () => {
               className="relative"
               ref={servicesRef}
               onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={(e) => {
+                // Only close if not moving to dropdown
+                const rect = dropdownRef.current?.getBoundingClientRect();
+                if (!rect || e.clientY < rect.top - 10) {
+                  setTimeout(() => setIsServicesOpen(false), 100);
+                }
+              }}
             >
               <button 
                 className="flex items-center space-x-1 font-medium text-gray-300 hover:text-blue-400 transition-all duration-300"
@@ -82,8 +79,9 @@ const Header = () => {
               {isServicesOpen && (
                 <div 
                   ref={dropdownRef}
-                  className="absolute top-full left-0 mt-2 w-80 glass-effect rounded-2xl shadow-2xl border border-gray-700 py-4 z-50"
-                  onMouseLeave={() => setIsServicesOpen(false)}
+                  className="absolute top-full left-0 mt-1 w-80 glass-effect rounded-2xl shadow-2xl border border-gray-700 py-4 z-50"
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setTimeout(() => setIsServicesOpen(false), 100)}
                 >
                   {services.map((service) => (
                     <Link
