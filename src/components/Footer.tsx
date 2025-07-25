@@ -47,7 +47,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              We're a team of passionate web developers and digital strategists dedicated to helping businesses thrive online. From custom WordPress development to comprehensive website migrations, we deliver solutions that drive real results.
+              We're a team of passionate web developers and digital strategists dedicated to helping British businesses thrive online. From custom WordPress development to comprehensive website migrations, we deliver solutions that drive real results.
             </p>
             
             {/* Contact Info */}

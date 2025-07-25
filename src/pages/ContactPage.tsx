@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Mail, 
@@ -9,7 +10,8 @@ import {
   CheckCircle,
   MessageSquare,
   Calendar,
-  ArrowRight
+  ArrowRight,
+  Users
 } from 'lucide-react';
 
 const ContactPage = () => {
