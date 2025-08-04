@@ -24,7 +24,8 @@ const Sitemap = () => {
       pages: [
         { name: 'Home', path: '/', description: 'Professional web development services homepage' },
         { name: 'Contact', path: '/contact', description: 'Get in touch for web development projects' },
-        { name: 'Sitemap', path: '/sitemap', description: 'Complete website structure and navigation' }
+        { name: 'Sitemap', path: '/sitemap', description: 'Complete website structure and navigation' },
+        { name: 'XML Sitemap', path: '/xml-sitemap', description: 'XML sitemap for search engines' }
       ]
     },
     {
@@ -55,6 +56,61 @@ const Sitemap = () => {
           name: 'Security Services', 
           path: '/services/security-services', 
           description: 'Advanced website security, malware protection, and monitoring'
+        },
+        { 
+          name: 'WordPress Hosting', 
+          path: '/services/wordpress-hosting', 
+          description: 'Managed WordPress hosting with UK servers and enterprise security'
+        },
+        { 
+          name: 'Website Redesign', 
+          path: '/services/website-redesign', 
+          description: 'Professional website redesign services for modern, engaging websites'
+        },
+        { 
+          name: 'E-commerce Development', 
+          path: '/services/ecommerce-development', 
+          description: 'Custom e-commerce solutions and online store development'
+        },
+        { 
+          name: 'Local SEO', 
+          path: '/services/local-seo', 
+          description: 'Local search optimisation to dominate your local market'
+        },
+        { 
+          name: 'Website Audits', 
+          path: '/services/website-audits', 
+          description: 'Comprehensive website analysis and improvement recommendations'
+        },
+        { 
+          name: 'WordPress Consultancy', 
+          path: '/services/wordpress-consultancy', 
+          description: 'Strategic WordPress expertise and consulting for UK businesses'
+        },
+        { 
+          name: 'WordPress Migration Services', 
+          path: '/services/wordpress-migration-services', 
+          description: 'Expert platform migration services from any CMS to WordPress'
+        },
+        { 
+          name: 'WordPress Support', 
+          path: '/services/wordpress-support', 
+          description: 'Professional WordPress support and emergency assistance'
+        },
+        { 
+          name: 'WordPress Training', 
+          path: '/services/wordpress-training', 
+          description: 'Professional WordPress training courses for UK teams'
+        },
+        { 
+          name: 'Website Accessibility', 
+          path: '/services/website-accessibility', 
+          description: 'WCAG compliance and inclusive design services'
+        },
+        { 
+          name: 'WordPress Backup Services', 
+          path: '/services/wordpress-backup-services', 
+          description: 'Automated backup and disaster recovery solutions'
         }
       ]
     },

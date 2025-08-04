@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useSEO } from './utils/seoManager';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -19,6 +20,19 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import Admin from './pages/Admin';
+import BlogManagement from './pages/BlogManagement';
+import WordPressHosting from './pages/WordPressHosting';
+import WebsiteRedesign from './pages/WebsiteRedesign';
+import EcommerceDevelopment from './pages/EcommerceDevelopment';
+import LocalSEO from './pages/LocalSEO';
+import WebsiteAudits from './pages/WebsiteAudits';
+import XMLSitemap from './pages/XMLSitemap';
+import WordPressConsultancy from './pages/WordPressConsultancy';
+import WordPressMigrationServices from './pages/WordPressMigrationServices';
+import WordPressSupport from './pages/WordPressSupport';
+import WordPressTraining from './pages/WordPressTraining';
+import WebsiteAccessibility from './pages/WebsiteAccessibility';
+import WordPressBackupServices from './pages/WordPressBackupServices';
 
 // Component to scroll to top on route change
 function ScrollToTop() {
@@ -31,10 +45,18 @@ function ScrollToTop() {
   return null;
 }
 
+// Component to handle SEO for each route
+function SEOHandler() {
+  const { pathname } = useLocation();
+  useSEO(pathname);
+  return null;
+}
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <SEOHandler />
       <div className="min-h-screen bg-gray-900">
         <Header />
         <main>
@@ -50,10 +72,23 @@ function App() {
             <Route path="/services/website-maintenance" element={<WebsiteMaintenance />} />
             <Route path="/services/speed-optimization" element={<SpeedOptimization />} />
             <Route path="/services/security-services" element={<SecurityServices />} />
+            <Route path="/services/wordpress-hosting" element={<WordPressHosting />} />
+            <Route path="/services/website-redesign" element={<WebsiteRedesign />} />
+            <Route path="/services/ecommerce-development" element={<EcommerceDevelopment />} />
+            <Route path="/services/local-seo" element={<LocalSEO />} />
+            <Route path="/services/website-audits" element={<WebsiteAudits />} />
+            <Route path="/services/wordpress-consultancy" element={<WordPressConsultancy />} />
+            <Route path="/services/wordpress-migration-services" element={<WordPressMigrationServices />} />
+            <Route path="/services/wordpress-support" element={<WordPressSupport />} />
+            <Route path="/services/wordpress-training" element={<WordPressTraining />} />
+            <Route path="/services/website-accessibility" element={<WebsiteAccessibility />} />
+            <Route path="/services/wordpress-backup-services" element={<WordPressBackupServices />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/xml-sitemap" element={<XMLSitemap />} />
+            <Route path="/blog-management" element={<BlogManagement />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>

@@ -498,8 +498,7 @@ const ContactPage = () => {
                 to="/contact"
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                <Calendar className="h-5 w-5" />
-                <span>Book Consultation</span>
+                <span>View Our Services</span>
               </Link>
             </div>
           </motion.div>

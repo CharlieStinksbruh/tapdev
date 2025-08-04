@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useContentManager } from '../hooks/useContentManager';
 import { 
   ExternalLink, 
   Code, 
@@ -18,128 +19,19 @@ import {
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const { portfolioProjects } = useContentManager();
 
   const categories = [
-    { id: 'all', name: 'All Projects', count: 12 },
-    { id: 'ecommerce', name: 'E-commerce', count: 4 },
-    { id: 'business', name: 'Business', count: 5 },
-    { id: 'nonprofit', name: 'Non-Profit', count: 3 }
+    { id: 'all', name: 'All Projects', count: portfolioProjects.filter(p => p.enabled).length },
+    { id: 'ecommerce', name: 'E-commerce', count: portfolioProjects.filter(p => p.enabled && p.category === 'ecommerce').length },
+    { id: 'business', name: 'Business', count: portfolioProjects.filter(p => p.enabled && p.category === 'business').length },
+    { id: 'nonprofit', name: 'Non-Profit', count: portfolioProjects.filter(p => p.enabled && p.category === 'nonprofit').length }
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Premium Fashion Store',
-      category: 'ecommerce',
-      client: 'Fashion Retailer',
-      description: 'Complete WooCommerce solution with advanced product filtering, wishlist functionality, and optimised checkout process.',
-      image: 'fashion-store',
-      technologies: ['WordPress', 'WooCommerce', 'Custom PHP', 'React'],
-      results: {
-        performance: '+300% faster loading',
-        conversions: '+45% increase in sales',
-        mobile: '95/100 mobile score'
-      },
-      features: ['Custom Product Filters', 'Wishlist System', 'Multi-Currency', 'Inventory Management'],
-      url: '#',
-      testimonial: 'Our online sales tripled within the first month of launch.',
-      timeline: '6 weeks'
-    },
-    {
-      id: 2,
-      title: 'Legal Services Platform',
-      category: 'business',
-      client: 'Law Firm',
-      description: 'Professional website with client portal, document management, and appointment booking system.',
-      image: 'legal-platform',
-      technologies: ['WordPress', 'Custom Plugins', 'Member System', 'Payment Gateway'],
-      results: {
-        leads: '+200% more enquiries',
-        efficiency: '80% admin time saved',
-        satisfaction: '95% client satisfaction'
-      },
-      features: ['Client Portal', 'Document Management', 'Appointment Booking', 'Secure Communications'],
-      url: '#',
-      testimonial: 'The client portal has revolutionised how we manage client relationships.',
-      timeline: '8 weeks'
-    },
-    {
-      id: 3,
-      title: 'Healthcare Provider Website',
-      category: 'business',
-      client: 'Medical Practice',
-      description: 'HIPAA-compliant website with patient portal, appointment scheduling, and telemedicine integration.',
-      image: 'healthcare-site',
-      technologies: ['WordPress', 'HIPAA Compliance', 'Telemedicine API', 'Secure Forms'],
-      results: {
-        appointments: '+150% online bookings',
-        efficiency: '60% reduced admin calls',
-        compliance: '100% HIPAA compliant'
-      },
-      features: ['Patient Portal', 'Online Appointments', 'Telemedicine', 'Secure Messaging'],
-      url: '#',
-      testimonial: 'Patient satisfaction has increased significantly with the new online services.',
-      timeline: '10 weeks'
-    },
-    {
-      id: 4,
-      title: 'Charity Foundation Website',
-      category: 'nonprofit',
-      client: 'Children\'s Charity',
-      description: 'Donation platform with volunteer management, event calendar, and impact tracking.',
-      image: 'charity-site',
-      technologies: ['WordPress', 'Donation System', 'Event Management', 'Volunteer Portal'],
-      results: {
-        donations: '+180% online donations',
-        volunteers: '+90% volunteer signups',
-        engagement: '+250% social engagement'
-      },
-      features: ['Online Donations', 'Volunteer Portal', 'Event Calendar', 'Impact Tracking'],
-      url: '#',
-      testimonial: 'The new website has transformed our fundraising capabilities.',
-      timeline: '5 weeks'
-    },
-    {
-      id: 5,
-      title: 'Restaurant Chain Website',
-      category: 'business',
-      client: 'Restaurant Group',
-      description: 'Multi-location website with online ordering, table reservations, and loyalty programme.',
-      image: 'restaurant-site',
-      technologies: ['WordPress', 'Online Ordering', 'Reservation System', 'Loyalty Programme'],
-      results: {
-        orders: '+220% online orders',
-        reservations: '+85% table bookings',
-        loyalty: '5,000+ members'
-      },
-      features: ['Online Ordering', 'Table Reservations', 'Loyalty Programme', 'Multi-Location'],
-      url: '#',
-      testimonial: 'Online orders now represent 40% of our total revenue.',
-      timeline: '7 weeks'
-    },
-    {
-      id: 6,
-      title: 'Tech Startup Platform',
-      category: 'business',
-      client: 'SaaS Company',
-      description: 'Product showcase with user onboarding, pricing calculator, and customer portal.',
-      image: 'saas-platform',
-      technologies: ['WordPress', 'Custom Calculator', 'User Onboarding', 'API Integration'],
-      results: {
-        signups: '+300% trial signups',
-        conversion: '+65% trial to paid',
-        support: '50% fewer support tickets'
-      },
-      features: ['Pricing Calculator', 'User Onboarding', 'Customer Portal', 'API Integration'],
-      url: '#',
-      testimonial: 'The new website has significantly improved our conversion funnel.',
-      timeline: '9 weeks'
-    }
-  ];
 
   const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+    ? portfolioProjects.filter(p => p.enabled)
+    : portfolioProjects.filter(p => p.enabled && p.category === activeFilter);
 
   const getCategoryIcon = (category) => {
     switch (category) {
@@ -335,7 +227,7 @@ const Portfolio = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">500+</div>
+              <div className="text-4xl font-bold gradient-text mb-2">{portfolioProjects.filter(p => p.enabled).length}+</div>
               <div className="text-gray-300">Projects Completed</div>
             </div>
             <div className="text-center">

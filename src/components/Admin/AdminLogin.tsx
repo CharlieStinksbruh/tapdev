@@ -85,13 +85,6 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
             <p className="text-gray-400">Access the TapDev admin dashboard</p>
           </div>
 
-          {/* Demo Credentials Info */}
-          <div className="bg-blue-900/20 border border-blue-500/50 rounded-lg p-4 mb-6">
-            <p className="text-blue-400 text-sm font-medium mb-2">Demo Credentials:</p>
-            <p className="text-blue-300 text-sm">Username: Charlie</p>
-            <p className="text-blue-300 text-sm">Password: Chazf123!</p>
-          </div>
-
           {error && (
             <div className="bg-red-900/20 border border-red-500/50 rounded-lg p-4 mb-6">
               <p className="text-red-400 text-sm">{error}</p>

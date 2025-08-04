@@ -118,7 +118,7 @@ const Footer = () => {
                 { name: 'Website Migrations', path: '/services/website-migrations' },
                 { name: 'WordPress Development', path: '/services/wordpress-development' },
                 { name: 'Website Maintenance', path: '/services/website-maintenance' },
-                { name: 'Speed Optimization', path: '/services/speed-optimization' },
+                { name: 'Speed Optimisation', path: '/services/speed-optimization' },
                 { name: 'Security Services', path: '/services/security-services' }
               ].map((service) => (
                 <li key={service.path}>
@@ -143,6 +143,7 @@ const Footer = () => {
                 { name: 'Portfolio', path: '/portfolio' },
                 { name: 'Case Studies', path: '/case-studies' },
                 { name: 'Blog', path: '/blog' },
+                { name: 'Blog Management', path: '/blog-management' },
                 { name: 'Contact', path: '/contact' },
                 { name: 'Free Consultation', path: '/contact' }
               ].map((link) => (

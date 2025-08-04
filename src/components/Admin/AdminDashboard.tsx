@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useRealData } from '../../hooks/useRealData';
+import SEOManager from './SEOManager';
+import ContentManager from './ContentManager';
 import { 
   BarChart3, 
   Users, 
@@ -21,7 +25,8 @@ import {
   Image,
   Code,
   Palette,
-  Shield
+  Shield,
+  Briefcase
 } from 'lucide-react';
 
 interface AdminDashboardProps {
@@ -33,139 +38,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
+  const { forms, newsletter, stats, updateFormStatus, deleteForm, deleteSubscriber } = useRealData();
 
-  // Mock data for demonstration
-  const [stats] = useState({
-    totalForms: 24,
-    newForms: 8,
-    totalSubscribers: 156,
-    recentForms: [
-      { id: 1, name: 'John Smith', email: 'john@example.com', status: 'new', submittedAt: new Date().toISOString() },
-      { id: 2, name: 'Sarah Johnson', email: 'sarah@example.com', status: 'contacted', submittedAt: new Date(Date.now() - 86400000).toISOString() },
-      { id: 3, name: 'Mike Wilson', email: 'mike@example.com', status: 'new', submittedAt: new Date(Date.now() - 172800000).toISOString() }
-    ],
-    recentSubscribers: [
-      { id: 1, email: 'subscriber1@example.com', subscribedAt: new Date().toISOString() },
-      { id: 2, email: 'subscriber2@example.com', subscribedAt: new Date(Date.now() - 86400000).toISOString() },
-      { id: 3, email: 'subscriber3@example.com', subscribedAt: new Date(Date.now() - 172800000).toISOString() }
-    ]
-  });
-
-  const [forms, setForms] = useState([
-    { 
-      id: 1, 
-      name: 'John Smith', 
-      email: 'john@example.com', 
-      company: 'Tech Corp', 
-      service: 'WordPress Development', 
-      message: 'Looking for a custom WordPress solution for our business.',
-      budget: '£5,000 - £10,000',
-      status: 'new', 
-      submittedAt: new Date().toISOString() 
-    },
-    { 
-      id: 2, 
-      name: 'Sarah Johnson', 
-      email: 'sarah@example.com', 
-      company: 'Design Studio', 
-      service: 'Website Migration', 
-      message: 'Need to migrate our site from Wix to WordPress.',
-      budget: '£1,000 - £5,000',
-      status: 'contacted', 
-      submittedAt: new Date(Date.now() - 86400000).toISOString() 
-    },
-    { 
-      id: 3, 
-      name: 'Mike Wilson', 
-      email: 'mike@example.com', 
-      company: 'E-commerce Store', 
-      service: 'Speed Optimization', 
-      message: 'Our site is too slow and affecting conversions.',
-      budget: '£2,000 - £5,000',
-      status: 'completed', 
-      submittedAt: new Date(Date.now() - 172800000).toISOString() 
-    },
-    { 
-      id: 4, 
-      name: 'Emma Davis', 
-      email: 'emma@example.com', 
-      company: 'Marketing Agency', 
-      service: 'Security Services', 
-      message: 'Need comprehensive security for client websites.',
-      budget: '£10,000+',
-      status: 'new', 
-      submittedAt: new Date(Date.now() - 259200000).toISOString() 
-    }
-  ]);
-
-  const [newsletter, setNewsletter] = useState([
-    { id: 1, email: 'subscriber1@example.com', subscribedAt: new Date().toISOString(), status: 'active' },
-    { id: 2, email: 'subscriber2@example.com', subscribedAt: new Date(Date.now() - 86400000).toISOString(), status: 'active' },
-    { id: 3, email: 'subscriber3@example.com', subscribedAt: new Date(Date.now() - 172800000).toISOString(), status: 'active' },
-    { id: 4, email: 'subscriber4@example.com', subscribedAt: new Date(Date.now() - 259200000).toISOString(), status: 'active' },
-    { id: 5, email: 'subscriber5@example.com', subscribedAt: new Date(Date.now() - 345600000).toISOString(), status: 'active' }
-  ]);
-
-  const [seoSettings, setSeoSettings] = useState({
-    siteName: 'TapDev - Professional Web Development Services',
-    siteDescription: 'Professional WordPress development, website migrations, and comprehensive web services. Trusted by 500+ businesses across the UK.',
-    favicon: '/favicon.ico',
-    metaKeywords: 'wordpress development, website migration, web development, security services, speed optimization',
-    ogImage: '/og-image.jpg',
-    twitterCard: 'summary_large_image',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "TapDev",
-      "description": "Professional web development services specializing in WordPress development, website migrations, and comprehensive web solutions.",
-      "url": "https://tapdev.co.uk",
-      "logo": "https://tapdev.co.uk/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+44-xxx-xxx-xxxx",
-        "contactType": "customer service",
-        "email": "hello@tapdev.co.uk"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "GB"
-      },
-      "sameAs": [
-        "https://twitter.com/tapdev",
-        "https://linkedin.com/company/tapdev"
-      ]
-    },
-    robotsTxt: "User-agent: *\nAllow: /\nSitemap: https://tapdev.co.uk/sitemap.xml",
-    customCSS: "",
-    customJS: "",
-    googleAnalytics: "",
-    googleTagManager: "",
-    facebookPixel: ""
-  });
-
-  const updateFormStatus = (id: number, status: string) => {
-    setForms(prevForms => 
-      prevForms.map(form => 
-        form.id === id ? { ...form, status } : form
-      )
-    );
-  };
-
-  const deleteForm = (id: number) => {
-    if (!confirm('Are you sure you want to delete this form submission?')) return;
-    setForms(prevForms => prevForms.filter(form => form.id !== id));
-  };
-
-  const deleteSubscriber = (id: number) => {
-    if (!confirm('Are you sure you want to delete this subscriber?')) return;
-    setNewsletter(prevNewsletter => prevNewsletter.filter(sub => sub.id !== id));
-  };
-
-  const updateSeoSettings = () => {
-    // In a real app, this would save to a backend
-    localStorage.setItem('seoSettings', JSON.stringify(seoSettings));
-    alert('SEO settings saved successfully!');
-  };
 
   const filteredForms = forms.filter(form => {
     const matchesSearch = form.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -179,6 +53,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
     { id: 'dashboard', name: 'Dashboard', icon: <BarChart3 className="h-5 w-5" /> },
     { id: 'forms', name: 'Form Submissions', icon: <FileText className="h-5 w-5" /> },
     { id: 'newsletter', name: 'Newsletter', icon: <Mail className="h-5 w-5" /> },
+    { id: 'blog', name: 'Blog Posts', icon: <Edit className="h-5 w-5" /> },
+    { id: 'content', name: 'Content Management', icon: <Briefcase className="h-5 w-5" /> },
     { id: 'seo', name: 'SEO Settings', icon: <Settings className="h-5 w-5" /> }
   ];
 
@@ -238,7 +114,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
               <h2 className="text-3xl font-bold mb-8">Dashboard Overview</h2>
               
               {/* Stats Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
                   <div className="flex items-center justify-between">
                     <div>
@@ -272,8 +148,18 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
                   <div className="flex items-center justify-between">
                     <div>
+                      <p className="text-gray-400 text-sm">Blog Posts</p>
+                      <p className="text-3xl font-bold text-white">{stats.blogPosts?.length || 0}</p>
+                    </div>
+                    <Edit className="h-8 w-8 text-indigo-500" />
+                  </div>
+                </div>
+                
+                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                  <div className="flex items-center justify-between">
+                    <div>
                       <p className="text-gray-400 text-sm">This Month</p>
-                      <p className="text-3xl font-bold text-white">+32</p>
+                      <p className="text-3xl font-bold text-white">+{stats.monthlyGrowth.forms + stats.monthlyGrowth.subscribers}</p>
                     </div>
                     <BarChart3 className="h-8 w-8 text-orange-500" />
                   </div>
@@ -285,7 +171,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
                   <h3 className="text-xl font-bold mb-4">Recent Form Submissions</h3>
                   <div className="space-y-4">
-                    {stats.recentForms.map((form: any) => (
+                    {stats.recentForms.length > 0 ? stats.recentForms.map((form) => (
                       <div key={form.id} className="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
                         <div>
                           <p className="font-medium">{form.name}</p>
@@ -299,14 +185,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           {form.status}
                         </span>
                       </div>
-                    ))}
+                    )) : (
+                      <div className="text-center py-8 text-gray-400">
+                        <FileText className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                        <p>No form submissions yet</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
                   <h3 className="text-xl font-bold mb-4">Recent Subscribers</h3>
                   <div className="space-y-4">
-                    {stats.recentSubscribers.map((subscriber: any) => (
+                    {stats.recentSubscribers.length > 0 ? stats.recentSubscribers.map((subscriber) => (
                       <div key={subscriber.id} className="flex items-center justify-between p-3 bg-gray-700 rounded-lg">
                         <div>
                           <p className="font-medium">{subscriber.email}</p>
@@ -318,7 +209,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           Active
                         </span>
                       </div>
-                    ))}
+                    )) : (
+                      <div className="text-center py-8 text-gray-400">
+                        <Mail className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                        <p>No newsletter subscribers yet</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -428,7 +324,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                                 <Eye className="h-4 w-4" />
                               </button>
                               <button
-                                onClick={() => deleteForm(form.id)}
+                                onClick={() => {
+                                  if (confirm('Are you sure you want to delete this form submission?')) {
+                                    deleteForm(form.id);
+                                  }
+                                }}
                                 className="p-1 text-red-400 hover:text-red-300"
                                 title="Delete form"
                               >
@@ -438,6 +338,14 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           </td>
                         </tr>
                       ))}
+                      {filteredForms.length === 0 && (
+                        <tr>
+                          <td colSpan={6} className="px-6 py-12 text-center text-gray-400">
+                            <FileText className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                            <p>No form submissions found</p>
+                          </td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -493,7 +401,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           </td>
                           <td className="px-6 py-4">
                             <button
-                              onClick={() => deleteSubscriber(subscriber.id)}
+                              onClick={() => {
+                                if (confirm('Are you sure you want to delete this subscriber?')) {
+                                  deleteSubscriber(subscriber.id);
+                                }
+                              }}
                               className="p-1 text-red-400 hover:text-red-300"
                               title="Delete subscriber"
                             >
@@ -502,8 +414,83 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
                           </td>
                         </tr>
                       ))}
+                      {newsletter.length === 0 && (
+                        <tr>
+                          <td colSpan={4} className="px-6 py-12 text-center text-gray-400">
+                            <Mail className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                            <p>No newsletter subscribers found</p>
+                          </td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === 'blog' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-3xl font-bold">Blog Posts</h2>
+                <div className="flex items-center space-x-4">
+                  <Link
+                    to="/blog-management"
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-300"
+                  >
+                    <Edit className="h-4 w-4" />
+                    <span>Manage Blog</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                <div className="p-6">
+                  {stats.blogPosts && stats.blogPosts.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {stats.blogPosts.slice(0, 6).map((post: any) => (
+                        <div key={post.id} className="bg-gray-700 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              post.status === 'published' ? 'bg-green-600/20 text-green-400' : 'bg-yellow-600/20 text-yellow-400'
+                            }`}>
+                              {post.status}
+                            </span>
+                            <span className="text-gray-400 text-xs">
+                              {new Date(post.publishedAt).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <h3 className="font-medium text-white mb-2 line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm line-clamp-2">
+                            {post.excerpt}
+                          </p>
+                          <div className="mt-3 flex items-center justify-between">
+                            <span className="text-gray-500 text-xs">{post.author}</span>
+                            <span className="text-blue-400 text-xs">{post.category}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-12 text-gray-400">
+                      <Edit className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                      <p className="text-lg mb-2">No blog posts yet</p>
+                      <p className="text-sm mb-4">Create your first blog post to get started</p>
+                      <Link
+                        to="/blog-management"
+                        className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-300 text-white"
+                      >
+                        <Edit className="h-4 w-4" />
+                        <span>Create Blog Post</span>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -515,206 +502,17 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ user, onLogout }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold">SEO Settings</h2>
-                <button
-                  onClick={updateSeoSettings}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-300"
-                >
-                  <Save className="h-4 w-4" />
-                  <span>Save Changes</span>
-                </button>
-              </div>
+              <SEOManager />
+            </motion.div>
+          )}
 
-              <div className="space-y-8">
-                {/* Basic SEO */}
-                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <Globe className="h-5 w-5 mr-2 text-blue-400" />
-                    Basic SEO Settings
-                  </h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Site Name
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.siteName || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, siteName: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Favicon URL
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.favicon || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, favicon: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      />
-                    </div>
-                    <div className="lg:col-span-2">
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Site Description
-                      </label>
-                      <textarea
-                        value={seoSettings.siteDescription || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, siteDescription: e.target.value})}
-                        rows={3}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      />
-                    </div>
-                    <div className="lg:col-span-2">
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Meta Keywords
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.metaKeywords || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, metaKeywords: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                        placeholder="keyword1, keyword2, keyword3"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Media */}
-                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <Image className="h-5 w-5 mr-2 text-purple-400" />
-                    Social Media Settings
-                  </h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Open Graph Image URL
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.ogImage || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, ogImage: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Twitter Card Type
-                      </label>
-                      <select
-                        value={seoSettings.twitterCard || 'summary_large_image'}
-                        onChange={(e) => setSeoSettings({...seoSettings, twitterCard: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-500"
-                      >
-                        <option value="summary">Summary</option>
-                        <option value="summary_large_image">Summary Large Image</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Analytics */}
-                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <BarChart3 className="h-5 w-5 mr-2 text-orange-400" />
-                    Analytics & Tracking
-                  </h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Google Analytics ID
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.googleAnalytics || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, googleAnalytics: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                        placeholder="GA-XXXXXXXXX-X"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Google Tag Manager ID
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.googleTagManager || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, googleTagManager: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                        placeholder="GTM-XXXXXXX"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Facebook Pixel ID
-                      </label>
-                      <input
-                        type="text"
-                        value={seoSettings.facebookPixel || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, facebookPixel: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-                        placeholder="XXXXXXXXXXXXXXX"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Custom Code */}
-                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <Palette className="h-5 w-5 mr-2 text-pink-400" />
-                    Custom Code
-                  </h3>
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Custom CSS
-                      </label>
-                      <textarea
-                        value={seoSettings.customCSS || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, customCSS: e.target.value})}
-                        rows={6}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 font-mono text-sm"
-                        placeholder="/* Custom CSS styles */"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Custom JavaScript
-                      </label>
-                      <textarea
-                        value={seoSettings.customJS || ''}
-                        onChange={(e) => setSeoSettings({...seoSettings, customJS: e.target.value})}
-                        rows={6}
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 font-mono text-sm"
-                        placeholder="// Custom JavaScript code"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Robots.txt */}
-                <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                  <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <Shield className="h-5 w-5 mr-2 text-red-400" />
-                    Robots.txt
-                  </h3>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Robots.txt Content
-                    </label>
-                    <textarea
-                      value={seoSettings.robotsTxt || ''}
-                      onChange={(e) => setSeoSettings({...seoSettings, robotsTxt: e.target.value})}
-                      rows={6}
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 font-mono text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
+          {activeTab === 'content' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <ContentManager />
             </motion.div>
           )}
         </main>
